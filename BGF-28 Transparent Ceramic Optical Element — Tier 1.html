@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BGF-28 Transparent Ceramic Optical Element — Tier 1 Baseline Product</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fg: #1a1a1a;
+    --muted: #555;
+    --rule: #ccc;
+    --accent: #007BFF;
+    --accent-bg: #eaf4ff;
+    --table-head: #f2f2f2;
+    --warn: #b00020;
+    --ok: #0a7a2f;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    color: var(--fg);
+    background: #fff;
+  }
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11.5pt;
+    line-height: 1.5;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  h1, h2, h3, h4 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #111;
+    line-height: 1.25;
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+  }
+  h1 { font-size: 1.8em; border-bottom: 2px solid #222; padding-bottom: 0.3em; }
+  h2 { font-size: 1.35em; border-bottom: 1px solid #aaa; padding-bottom: 0.2em; }
+  h3 { font-size: 1.15em; }
+  h4 { font-size: 1.02em; font-style: italic; }
+  p { margin: 0.6em 0; text-align: justify; }
+  ul, ol { margin: 0.6em 0 0.6em 1.5em; }
+  li { margin: 0.25em 0; }
+  code {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.92em;
+    background: #f4f4f4;
+    padding: 1px 4px;
+    border-radius: 2px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.8em 0 1.2em 0;
+    font-size: 0.95em;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--table-head);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+  }
+  blockquote {
+    border-left: 4px solid var(--accent);
+    background: var(--accent-bg);
+    margin: 1em 0;
+    padding: 0.6em 1em;
+    color: #222;
+  }
+  .note {
+    background: #fff8e1;
+    border: 1px solid #e0c46a;
+    padding: 0.6em 1em;
+    margin: 1em 0;
+    font-size: 0.95em;
+  }
+  .warn {
+    background: #fdecea;
+    border: 1px solid #f5b7b1;
+    padding: 0.6em 1em;
+    margin: 1em 0;
+    color: var(--warn);
+    font-size: 0.95em;
+  }
+  .ok {
+    color: var(--ok);
+    font-weight: 600;
+  }
+  .fail {
+    color: var(--warn);
+    font-weight: 600;
+  }
+
+  /* ---------- Cover page ---------- */
+  .cover-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 250mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    break-after: page;
+    page-break-after: always;
+  }
+  .cover-page h1 {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .cover-page h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .cover-meta {
+    text-align: center;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    max-width: 680px;
+    margin: 20px auto;
+    font-size: 0.94em;
+  }
+  .cover-meta p,
+  .cover-meta hr,
+  .cover-meta h3 {
+    text-align: center;
+  }
+  .holographic-mark {
+    box-sizing: border-box;
+    width: min(360px, calc(100% - 40px));
+    padding: 16px 20px;
+    border: 2px solid #8b5cff;
+    background: linear-gradient(110deg, #10172b, #192443 55%, #22142e);
+    color: #f5f1ff;
+    box-shadow: 0 0 8px #8b5cff, 0 0 20px rgba(0, 238, 255, 0.25);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .wordmark {
+    margin: 0 0 8px;
+    color: #8dfaff;
+    font-family: "Orbitron", Arial, sans-serif;
+    font-size: clamp(1.4rem, 4.5vw, 1.9rem);
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    padding-left: 0.15em;
+    text-shadow: 0 0 8px #00eaff;
+  }
+  .tagline {
+    margin: 0;
+    color: #f7d9ff;
+    font-family: "Orbitron", Arial, sans-serif;
+    font-size: clamp(0.55rem, 1.5vw, 0.7rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding-left: 0.08em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    @page { margin: 15mm; }
+    body {
+      font-size: 10.5pt;
+      padding: 0;
+      max-width: none;
+    }
+    h1, h2, h3 {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+    table, figure, blockquote {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 250mm;
+      margin: 0 !important;
+      padding: 0 !important;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      break-after: page;
+      page-break-after: always;
+    }
+    .cover-page h1 {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .cover-page h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .cover-meta {
+      margin: 10px auto !important;
+      padding: 20px !important;
+      text-align: center;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .cover-meta p,
+    .cover-meta hr,
+    .cover-meta h3 { text-align: center; }
+    .cover-page > .holographic-mark {
+      margin-top: auto;
+      margin-bottom: 20px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER PAGE
+     ============================================================ -->
+<div class="cover-page">
+
+  <h1>BGF-28 Transparent Ceramic Optical Element</h1>
+  <h2>Tier 1 Baseline Product — Engineering and Production Specification</h2>
+
+  <div class="cover-meta">
+    <h3>Martin Hristov</h3>
+    <p><a href="mailto:M.V.Hristov@proton.me">M.V.Hristov@proton.me</a></p>
+    <p><code>2026-11-20</code></p>
+    <hr>
+    <p><strong>Document Type:</strong> Engineering Specification (Public Release)</p>
+    <p><strong>Document License:</strong> CC BY 4.0 (Creative Commons Attribution 4.0 International; attribution required)</p>
+    <p><strong>Technology Patent Status:</strong>
+      <span style="color: green; font-weight: bold;">NO PATENT SOUGHT</span>
+    </p>
+    <p><strong>Advanced optimization:</strong> See Part 13</p>
+    <hr>
+    <p><strong>Links:</strong>
+      <a href="https://mega.nz/folder/v35nVLAB#NbS00c8CL8ONTEHyMPe-Fg">Mega</a> |
+      <a href="https://drive.proton.me/urls/CMHBZEQKVG#ScNAG2APdoH2">Proton Drive</a> |
+      <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Hristov%2C+Martin+V.%22">Zenodo</a> |
+      <a href="https://github.com/MartinVHristov">GitHub</a> |
+      <a href="https://osf.io/user/9ps8x">OSF</a> |
+      <a href="https://independent.academia.edu/MartinHristov37">Academia.edu</a> |
+      <a href="https://x.com/MHristov37">X</a>
+    </p>
+    <p><a href="https://mega.nz/file/XqgXWbJK#6Irn8gTiFu7xqOMFVTSLLYrO99JrACteXN-ULhgxsTI">Design Viability Ledger</a></p>
+  </div>
+
+  <div class="holographic-mark">
+    <p class="wordmark">6DUFT</p>
+    <p class="tagline">This is a 6DUFT inspired technology</p>
+  </div>
+
+</div>
+
+<!-- ============================================================
+     PART 1 — SCOPE AND PRODUCT DESCRIPTION
+     ============================================================ -->
+<h1>Part 1 — Scope and Product Description</h1>
+
+<h2>1.1 What This Document Is</h2>
+
+<p>
+This document is the engineering and production specification for the <strong>BGF-28 transparent ceramic optical element</strong>, Tier 1 baseline product. It contains every specification, process step, acceptance criterion, and operating instruction that an engineering team needs to build, qualify, mount, and operate the element.
+</p>
+
+<h2>1.2 What the Element Is</h2>
+
+<p>
+The BGF-28 is a <strong>transparent polycrystalline ceramic lens element</strong> of nominal composition <strong>Ba<sub>0.72</sub>Gd<sub>0.28</sub>F<sub>2.28</sub></strong>, in the single-phase cubic fluorite structure, with mean grain size ≤ 145 nm and clean grain boundaries. It is supplied as a polished, coated disc of 12 mm outside diameter (10 mm clear aperture, 1 mm mounting zone per side; the mounting zone carries the hermetic ALD coating but not the optical AR/UV coating). Mounting in a barrel is optional (see § 1.7).
+</p>
+
+<p>
+The element's optical constants are <strong>n<sub>d</sub> = 1.505 ± 0.001</strong> and <strong>V<sub>d</sub> = 62 ± 1</strong>. It has an approximate spectral extent from 300 nm to 8 µm, but the specified in-line transmission is T(1–5 µm) ≥ 0.85; transmission from 5–8 µm is not qualified in this Tier 1 specification. The clear aperture has anti-reflection coating. The element is macroscopically isotropic (no preferred crystal orientation) and has high thermal conductivity. It is not hygroscopic under the specified hermetic coating, and it is mechanically stable over the operating envelope.
+</p>
+
+<h2>1.3 What the Element Replaces</h2>
+
+<p>
+The BGF-28 is a <strong>drop-in replacement for crown-class optical elements</strong> in existing lens systems and instruments:
+</p>
+
+<ul>
+  <li><strong>N-SK16 and N-BK7 glass elements</strong> — replaced on the axes of <em>bandwidth</em> (glass transmits to ~2 µm; BGF-28 has specified T ≥ 0.85 through 5 µm, with an approximate but unqualified extent to 8 µm), <em>thermal conductivity</em> (BGF-28 conducts heat approximately 10× better than glass, reducing thermal lensing), and <em>cost</em> (BGF-28 element cost is comparable to or lower than a glass asphere).</li>
+  <li><strong>Fused silica elements</strong> — replaced on the axes of <em>bandwidth</em> (silica stops at 2.5 µm; BGF-28 has specified transmission through 5 µm) and <em>cost</em>.</li>
+  <li><strong>CaF<sub>2</sub> and BaF<sub>2</sub> single-crystal elements</strong> — replaced on the axes of <em>cost</em> (crystal elements cost 1.5–4× more), <em>isotropy</em> (the ceramic has no crystal-axis stress birefringence), and <em>ruggedness</em> (the ceramic does not cleave).</li>
+</ul>
+
+<h2>1.4 What the Element Does Not Replace</h2>
+
+<p>
+The BGF-28 is <strong>not</strong> a replacement for:
+</p>
+
+<ul>
+  <li><strong>A lightweight glass element in a weight-sensitive system.</strong> The element is approximately 1.85× heavier per unit optical power than N-SK16 glass (density 5.44 g/cm³ vs. 3.60 g/cm³ at comparable index range). Weight-sensitive instruments should use a polymer or glass element where weight dominates.</li>
+  <li><strong>A self-athermal element.</strong> The element has a low thermo-optic coefficient (|dn/dT| ≈ 1×10⁻⁵/K, about 10× lower than polymer) but is not self-athermal. System athermalization is required: autofocus for consumer-class instruments, or a <strong>PBT-GF30 barrel</strong> (CTE 35 ± 2 ppm/K) for fixed-focus at f/4 and slower across the stated element and barrel tolerance windows. Fixed-focus at f/2.8 requires individual thermal qualification of the element–barrel assembly; matching solely within the stated barrel CTE window cannot guarantee every allowed element meets the stated depth-of-focus criterion. For fixed-focus at f/2 and faster, active autofocus is required (see Part 8).</li>
+  <li><strong>A complete lens system.</strong> The element is one optical component. The full dispersion curve required for chromatic balancing of a multi-element system is not part of this product; only the two-term dispersion consistent with the stated n<sub>d</sub> and V<sub>d</sub> is provided (see § 8.7).</li>
+  <li><strong>A high-power laser optic.</strong> The laser-induced damage threshold of the ceramic is not qualified in this Tier 1 product. High-power laser use is a higher tier offering (see Part 13).</li>
+  <li><strong>A deep-UV optic below 300 nm.</strong> Transmission falls below 50% at 300 nm in the standard product (UV-transmitting variant: see § 1.6). Deep-UV below 300 nm is a higher tier offering.</li>
+</ul>
+
+<h2>1.5 Principal Applications</h2>
+
+<p>
+The element's advantage set — <strong>broadband transmission, high thermal conductivity, isotropic optics, and glass-class cost</strong> — fits the following applications, where it is expected to be used as a direct replacement for one or more crown-class elements:
+</p>
+
+<table>
+  <thead>
+    <tr><th>Application</th><th>Fit</th><th>Why</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>UV–VIS fluorescence microscopy</td><td>Strong</td><td>Broadband excitation 350–400 nm plus visible collection in one element; low thermal lensing under illumination.</td></tr>
+    <tr><td>Multispectral imaging (UV–VIS–NIR–SWIR)</td><td>Strong</td><td>300 nm – 2.5 µm in a single element; replaces 2–3 glass elements in a multispectral stack.</td></tr>
+    <tr><td>Raman and LIBS spectroscopy</td><td>Strong</td><td>UV laser excitation plus visible/NIR collection; low thermal lensing at high pump power.</td></tr>
+    <tr><td>UV–VIS spectrophotometry</td><td>Strong</td><td>Direct replacement for fused silica at lower cost and wider band.</td></tr>
+    <tr><td>Machine vision with NIR illumination</td><td>Strong</td><td>VIS + 900–1700 nm coverage; stable under high-power illumination.</td></tr>
+    <tr><td>Environmental and agricultural monitoring</td><td>Strong</td><td>UV absorption bands + NIR emission features in one instrument; low cost.</td></tr>
+    <tr><td>Semiconductor wafer inspection</td><td>Moderate</td><td>UV + VIS + NIR; low thermal lensing. Hardness limits the use of the bare element in contact-prone fixtures (hard coat is mandatory).</td></tr>
+    <tr><td>Consumer visible-band photography</td><td>Weak</td><td>Glass is lighter, harder, and has lower dn/dT at similar cost. BGF-28 offers no visible-band advantage over glass in a consumer camera.</td></tr>
+  </tbody>
+</table>
+
+<p>
+The element is intended for <strong>scientific and industrial instrumentation</strong>, not for consumer visible-band photography. The principal commercial case is: <em>the only element in the US$25–30 cost class that spans UV through MWIR at glass-class optical quality.</em>
+</p>
+
+<h2>1.6 Product Variants</h2>
+
+<p>
+Two coating variants are supplied from the same ceramic substrate. The choice is made at the coating step; the material, dimensions, mount, and proof test are identical.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Variant</th><th>Coating stack</th><th>Transmission</th><th>Intended use</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>BGF-28-VIS/UVBLOCK</strong> (standard)</td>
+      <td>Al<sub>2</sub>O<sub>3</sub> seed + ALD Al<sub>2</sub>O<sub>3</sub> 200 nm + HfO<sub>2</sub>/SiO<sub>2</sub> UV mirror + AR MgF<sub>2</sub>/LaF<sub>3</sub> + SiO<sub>2</sub> overcoat</td>
+      <td>T(300 nm) &lt; 0.1%; T(500 nm) ≥ 0.85; T(1–5 µm) ≥ 0.85</td>
+      <td>Any instrument with a visible detector that must be protected from UV. Deep-UV exposure would otherwise create color centers in the substrate.</td>
+    </tr>
+    <tr>
+      <td><strong>BGF-28-UVTRANSMIT</strong></td>
+      <td>Al<sub>2</sub>O<sub>3</sub> seed + ALD Al<sub>2</sub>O<sub>3</sub> 200 nm + AR MgF<sub>2</sub>/LaF<sub>3</sub> 300–700 nm + SiO<sub>2</sub> overcoat</td>
+      <td>T(300 nm) ≥ 0.55; T(500 nm) ≥ 0.85; T(1–5 µm) ≥ 0.85</td>
+      <td>Instruments that need UV throughput (fluorescence excitation, UV–VIS spectroscopy, UV imaging). The element must be operated with UV exposure below the color-center threshold (see Part 8).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>1.7 Summary of What Is Being Supplied</h2>
+
+<p>
+The standard supply is a <strong>12 mm outside-diameter, 10 mm clear-aperture, polished, coated, un-mounted ceramic element</strong> of the specified variant, proof-tested, and accompanied by a per-element QC record. The element can be ordered <strong>mounted in a customer-supplied or supplier-supplied PBT-GF30 barrel</strong> (see Part 7); the mounting hardware is a separate line item.
+</p>
+
+<p>
+The element is supplied under CC BY 4.0 with no patent claims. The design, the production process, and the operating instructions are released to the public with attribution required and no royalty owed.
+</p>
+
+<!-- Continue with Part 2 immediately below this line. -->
+
+<!-- ============================================================
+     PART 2 — MATERIAL SPECIFICATION
+     ============================================================ -->
+<h1>Part 2 — Material Specification</h1>
+
+<h2>2.1 Material Identity</h2>
+
+<table>
+  <thead>
+    <tr><th>Property</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Chemical name</td><td>Barium gadolinium fluoride solid solution</td></tr>
+    <tr><td>Nominal formula</td><td>Ba<sub>0.72</sub>Gd<sub>0.28</sub>F<sub>2.28</sub></td></tr>
+    <tr><td>Crystal structure</td><td>Cubic fluorite (CaF<sub>2</sub>-type, space group Fm3̄m), single phase</td></tr>
+    <tr><td>Grain morphology</td><td>Equiaxed polycrystalline, mean grain size ≤ 145 nm</td></tr>
+    <tr><td>Macroscopic symmetry</td><td>Isotropic (no preferred crystal orientation)</td></tr>
+    <tr><td>Appearance</td><td>Colorless, transparent</td></tr>
+  </tbody>
+</table>
+
+<h2>2.2 Complete Parameter Set</h2>
+
+<p>
+The acceptance ranges below are the production acceptance criteria. Every element must satisfy every parameter. The <em>nominal</em> column is the process set-point; the <em>accept</em> column is the pass/fail window.
+</p>
+
+<h3>2.2.1 Composition and Chemistry</h3>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Nominal</th><th>Accept</th><th>Method</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Ba/Gd metal ratio</td><td>0.72 / 0.28</td><td>± 0.01</td><td>ICP-OES</td></tr>
+    <tr><td>F/(Ba+Gd) in finished part</td><td>2.28</td><td>2.24 – 2.32</td><td>ISE, ICP-OES after dissolution</td></tr>
+    <tr><td>Oxygen content</td><td>50 ppm</td><td>≤ 80 ppm</td><td>inert-gas fusion</td></tr>
+    <tr><td>Carbon content</td><td>100 ppm</td><td>≤ 500 ppm</td><td>LECO combustion</td></tr>
+    <tr><td>Fe</td><td>50 ppb</td><td>≤ 80 ppb</td><td>ICP-MS</td></tr>
+    <tr><td>Cu</td><td>20 ppb</td><td>≤ 100 ppb</td><td>ICP-MS</td></tr>
+    <tr><td>Ni</td><td>20 ppb</td><td>≤ 100 ppb</td><td>ICP-MS</td></tr>
+    <tr><td>Mn</td><td>20 ppb</td><td>≤ 100 ppb</td><td>ICP-MS</td></tr>
+    <tr><td>Cr</td><td>20 ppb</td><td>≤ 100 ppb</td><td>ICP-MS</td></tr>
+    <tr><td>Zr (mill media carryover)</td><td>5 ppm</td><td>≤ 8 ppm</td><td>ICP-MS</td></tr>
+    <tr><td>Mo (HIP liner carryover)</td><td>≤ 5 ppm</td><td>≤ 10 ppm</td><td>ICP-MS</td></tr>
+    <tr><td>Ta (capsule carryover)</td><td>≤ 5 ppm</td><td>≤ 10 ppm</td><td>ICP-MS</td></tr>
+    <tr><td>Eu, Tb, Sm (each)</td><td>&lt; 0.5 ppm</td><td>&lt; 1 ppm</td><td>ICP-MS</td></tr>
+  </tbody>
+</table>
+
+<h3>2.2.2 Microstructure</h3>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Nominal</th><th>Accept</th><th>Method</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Mean grain size</td><td>123 nm</td><td>≤ 145 nm</td><td>TEM, XRD Scherrer as cross-check</td></tr>
+    <tr><td>Grain-size distribution</td><td>σ<sub>log</sub> = 0.12</td><td>σ<sub>log</sub> ≤ 0.15</td><td>TEM (5 fields)</td></tr>
+    <tr><td>Grain-boundary refractive-index contrast</td><td>1 × 10⁻⁴</td><td>≤ 3 × 10⁻⁴</td><td>EELS</td></tr>
+    <tr><td>Bulk density</td><td>5.44 g/cm³</td><td>5.39 – 5.49 g/cm³</td><td>Archimedes</td></tr>
+    <tr><td>Relative density</td><td>99.7% of theoretical</td><td>≥ 99.5% of theoretical</td><td>Archimedes</td></tr>
+    <tr><td>Secondary phase</td><td>None</td><td>None detected</td><td>XRD (limit of detection 0.5 vol%)</td></tr>
+    <tr><td>Lattice parameter</td><td>6.101 Å</td><td>6.098 – 6.102 Å</td><td>XRD</td></tr>
+  </tbody>
+</table>
+
+<h3>2.2.3 Optical Properties</h3>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Nominal</th><th>Accept</th><th>Method</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Refractive index n<sub>d</sub> (587.6 nm)</td><td>1.505</td><td>1.504 – 1.506</td><td>Prism refractometry</td></tr>
+    <tr><td>Abbe number V<sub>d</sub></td><td>62</td><td>61 – 63</td><td>Prism refractometry (n<sub>F</sub>, n<sub>C</sub>)</td></tr>
+    <tr><td>In-line transmission T(500 nm), 10 mm path</td><td>0.97</td><td>≥ 0.85</td><td>Spectrophotometer, integrating sphere</td></tr>
+    <tr><td>In-line transmission T(300 nm), 10 mm path</td><td>0.71 (UV-transmit variant)</td><td>≥ 0.55 (UV-transmit) / &lt; 0.001 (UV-block)</td><td>Spectrophotometer</td></tr>
+    <tr><td>In-line transmission T(1–5 µm), 10 mm path</td><td>0.95</td><td>≥ 0.85</td><td>FTIR</td></tr>
+    <tr><td>Scatter coefficient at 500 nm</td><td>0.0006 /cm</td><td>≤ 0.03 /cm</td><td>Integrating sphere</td></tr>
+    <tr><td>Refractive index homogeneity over clear aperture</td><td>5 × 10⁻⁵</td><td>≤ 1 × 10⁻⁴</td><td>Interferometry (633 nm)</td></tr>
+    <tr><td>Surface figure (after all coatings)</td><td>λ/10</td><td>λ/4 at 633 nm</td><td>Interferometer</td></tr>
+    <tr><td>Surface roughness</td><td>0.5 nm rms</td><td>&lt; 1 nm rms</td><td>AFM</td></tr>
+    <tr><td>Stress birefringence</td><td>&lt; 1 nm/cm</td><td>&lt; 5 nm/cm</td><td>Polarimetry</td></tr>
+  </tbody>
+</table>
+
+<h3>2.2.4 Thermal and Mechanical Properties</h3>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Nominal</th><th>Accept</th><th>Method</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Coefficient of thermal expansion (20–300 °C)</td><td>18 ppm/K</td><td>17 – 19 ppm/K</td><td>Dilatometry</td></tr>
+    <tr><td>Thermo-optic coefficient dn/dT</td><td>−1.0 × 10⁻⁵ /K</td><td>−1.2 to −0.8 × 10⁻⁵ /K</td><td>Interferometry vs. temperature</td></tr>
+    <tr><td>Thermal conductivity</td><td>~12 W/(m·K)</td><td>≥ 8 W/(m·K)</td><td>Laser flash</td></tr>
+    <tr><td>Knoop hardness (coated surface)</td><td>≥ 2H pencil equivalent</td><td>≥ 2H</td><td>Pencil hardness, ASTM D3363</td></tr>
+    <tr><td>Biaxial flexural strength (Weibull σ<sub>0</sub>)</td><td>100 MPa</td><td>≥ 80 MPa</td><td>Ring-on-ring, 30 samples per lot</td></tr>
+    <tr><td>Weibull modulus m</td><td>8</td><td>≥ 6</td><td>Same as above</td></tr>
+    <tr><td>Fracture toughness K<sub>Ic</sub></td><td>~1 MPa·m<sup>1/2</sup></td><td>≥ 0.8 MPa·m<sup>1/2</sup></td><td>SEVNB or IF (informational)</td></tr>
+  </tbody>
+</table>
+
+<h3>2.2.5 Dimensions and Geometry (Standard Element)</h3>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Nominal</th><th>Accept</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Outside diameter</td><td>12.0 mm</td><td>± 0.05 mm</td></tr>
+    <tr><td>Clear aperture</td><td>10.0 mm</td><td>—</td></tr>
+    <tr><td>Mounting zone (per side; ALD-coated, no optical AR/UV coating)</td><td>1.0 mm</td><td>1.0 – 1.2 mm</td></tr>
+    <tr><td>Center thickness</td><td>2.0 mm</td><td>± 0.05 mm</td></tr>
+    <tr><td>Edge chamfer</td><td>0.2 mm × 45°</td><td>0.15 – 0.25 mm</td></tr>
+    <tr><td>Wedge</td><td>&lt; 5 arcmin</td><td>≤ 5 arcmin</td></tr>
+    <tr><td>Surface quality</td><td>20-10 scratch-dig</td><td>≤ 20-10</td></tr>
+  </tbody>
+</table>
+
+<h2>2.3 Safety Data Summary</h2>
+
+<p>
+The finished element is non-toxic as a solid. The fluoride material is slightly hygroscopic; the hermetic ALD coating and edge seal on the finished element protect it from moisture ingress under the operating envelope (Part 8 § 8.1). Uncoated bare material is stored in a desiccated environment (Part 2 § 2.4). The bulk material is not classified as hazardous for transport or storage. Health and safety requirements apply to the <em>production</em> stages (powder, HF, fluorine gas) and are specified in Part 12. The element's operation presents no unusual hazards; the standard handling rules for optical elements apply (avoid dropping, avoid contacting the coated surface with abrasive materials, store below 40% RH).
+</p>
+
+<h2>2.4 Handling and Storage (Element Level)</h2>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Requirement</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Storage temperature</td><td>15 – 30 °C (recommended); −20 to +50 °C (survival)</td></tr>
+    <tr><td>Storage relative humidity</td><td>&lt; 40% RH</td></tr>
+    <tr><td>Packaging</td><td>Individual molded tray, anti-static foam, silica gel 2 g per element, N<sub>2</sub>-purged bag</td></tr>
+    <tr><td>Shelf life (packaged)</td><td>2 years from date of manufacture, stored per above</td></tr>
+    <tr><td>Handling</td><td>Powder-free gloves; hold by edge; never contact clear aperture</td></tr>
+    <tr><td>Cleaning (in-service)</td><td>IPA or acetone on lint-free wipe; no amine cleaners; no abrasive</td></tr>
+  </tbody>
+</table>
+
+<blockquote>
+<strong>Handling note.</strong> The bare ceramic surface is softer than glass and is protected by the outer SiO<sub>2</sub> overcoat. Do not contact the clear aperture with metal tools. The mounting zone carries the hermetic ALD coating but not the optical AR/UV coating; it is designed to be in compression in the mount. Do not clamp on the clear aperture.
+</blockquote>
+
+<h2>2.5 Packaging and Shipping</h2>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Requirement</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Package construction</td><td>Individual molded tray (fluoride-compatible polymer), anti-static foam insert, silica gel 2 g per element, N<sub>2</sub>-purged bag, sealed carton</td></tr>
+    <tr><td>Vibration qualification</td><td>ISTA 3A or equivalent parcel-vibration profile. Survival at 1 g rms, 10–2000 Hz, 2 h per axis verified per §10.3 on mounted assemblies.</td></tr>
+    <tr><td>Drop qualification</td><td>1.5 m drop on 6 faces, unmounted element in its package. Verified per §10.3.</td></tr>
+    <tr><td>Transport temperature</td><td>−20 °C to +50 °C (survival, packaged)</td></tr>
+    <tr><td>Transport relative humidity</td><td>&lt; 40% RH sustained; silica gel maintains the internal package RH for the stated shelf life</td></tr>
+    <tr><td>Shelf life</td><td>2 years from date of manufacture, stored per above</td></tr>
+    <tr><td>Transport classification</td><td>Not classified as dangerous goods (finished solid ceramic element)</td></tr>
+  </tbody>
+</table>
+
+<!-- Continue with Part 3 immediately below this line. -->
+
+<!-- ============================================================
+     PART 3 — POWDER PRODUCTION
+     ============================================================ -->
+<h1>Part 3 — Powder Production</h1>
+
+<h2>3.1 Overview</h2>
+
+<p>
+The powder production line converts high-purity Ba and Gd precursors into a homogeneous, single-phase, sub-micron barium gadolinium fluoride powder with controlled stoichiometry. The line comprises eleven steps. Every step is specified below with its parameters, its critical controls, and its acceptance criteria.
+</p>
+
+<p>
+The line must be operated <strong>free of steel contact</strong> from the mill stage onward. No iron, nickel, or cobalt alloy may contact the slurry, the powder, or the green body. This is a hard requirement: a single steel contact point is sufficient to contaminate a batch above the Fe spec.
+</p>
+
+<h2>3.2 Precursor Specifications</h2>
+
+<table>
+  <thead>
+    <tr><th>Precursor</th><th>Purity</th><th>Critical impurities (max)</th><th>Method</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Gd<sub>2</sub>O<sub>3</sub></td><td>4N5 (99.999%)</td><td>Eu, Tb, Sm: &lt; 1 ppm each; Fe, Cu, Ni, Mn, Cr: &lt; 100 ppb each</td><td>ICP-MS per lot</td></tr>
+    <tr><td>BaCO<sub>3</sub> or Ba(NO<sub>3</sub>)<sub>2</sub></td><td>4N (99.99%)</td><td>Sr, Ca: &lt; 10 ppm each; Fe, Cu, Ni, Mn, Cr: &lt; 100 ppb each</td><td>ICP-MS per lot</td></tr>
+    <tr><td>NH<sub>4</sub>F</td><td>4N</td><td>Fe, Cu, Ni, Mn, Cr: &lt; 100 ppb each</td><td>ICP-MS per lot</td></tr>
+    <tr><td>DI water</td><td>18 MΩ·cm</td><td>—</td><td>Inline resistivity</td></tr>
+    <tr><td>Anhydrous ethanol</td><td>≥ 99.9%, Karl Fischer H<sub>2</sub>O &lt; 0.05%</td><td>—</td><td>Karl Fischer per lot</td></tr>
+    <tr><td>Argon (process)</td><td>99.999%</td><td>O<sub>2</sub> &lt; 1 ppm, H<sub>2</sub>O &lt; 1 ppm</td><td>Certified per cylinder</td></tr>
+    <tr><td>HF/N<sub>2</sub> (calcination)</td><td>5% HF in N<sub>2</sub>, electronic grade</td><td>—</td><td>Certified per cylinder</td></tr>
+    <tr><td>PVB binder</td><td>Pharmaceutical grade, ethanol-soluble</td><td>—</td><td>Vendor certificate</td></tr>
+    <tr><td>BaF<sub>2</sub> or PTFE mill media</td><td>≥ 99.9%</td><td>Zr: &lt; 1 ppm</td><td>ICP-MS per lot</td></tr>
+  </tbody>
+</table>
+
+<h2>3.3 Process Flow</h2>
+
+<h3>3.3.1 Step 1 — Precursor QC</h3>
+
+<p>
+Every incoming lot of Gd<sub>2</sub>O<sub>3</sub>, BaCO<sub>3</sub>/Ba(NO<sub>3</sub>)<sub>2</sub>, and NH<sub>4</sub>F is sampled and analyzed by ICP-MS for the critical impurities listed in § 3.2. No lot enters the line until its ICP-MS result is approved. Store all precursors in a dry glovebox (&lt; 1% RH) after opening.
+</p>
+
+<h3>3.3.2 Step 2 — Co-precipitation (reverse addition)</h3>
+
+<p>
+<strong>Reverse addition is mandatory.</strong> The metal solution is added to a fluoride excess; the reverse (fluoride added to metal) is prohibited. The reason is the 11-order-of-magnitude difference between K<sub>sp</sub>(BaF<sub>2</sub>) ≈ 1.8 × 10<sup>−7</sup> and K<sub>sp</sub>(GdF<sub>3</sub>) ≈ 1.8 × 10<sup>−19</sup>. Forward addition produces a GdF<sub>3</sub> core with a BaF<sub>2</sub> shell (inhomogeneous powder, striae after sintering). Reverse addition, into a fluoride excess, precipitates both cations simultaneously and produces a mixed fluoride.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Metal solution</td><td>Ba(CH<sub>3</sub>COO)<sub>2</sub> + Gd(CH<sub>3</sub>COO)<sub>3</sub>, 0.1 M total metal, Ba:Gd = 0.72:0.28</td></tr>
+    <tr><td>Fluoride solution</td><td>0.1 M NH<sub>4</sub>F, 10% molar excess over the metal</td></tr>
+    <tr><td>Addition direction</td><td>Metal into fluoride (reverse addition)</td></tr>
+    <tr><td>Addition rate</td><td>0.5 mL/min</td></tr>
+    <tr><td>Temperature</td><td>60 °C</td></tr>
+    <tr><td>pH</td><td>5.0 (buffered with dilute HF / NH<sub>4</sub>OH)</td></tr>
+    <tr><td>Stirring</td><td>400 rpm, pitched-blade, PTFE-coated</td></tr>
+    <tr><td>Post-addition stir</td><td>2 h at 60 °C</td></tr>
+    <tr><td>Ageing</td><td>12 h at 60 °C (no stirring)</td></tr>
+    <tr><td>Vessel</td><td>PTFE-lined reactor; no steel contact</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3.3 Step 3 — Hydrothermal homogenization</h3>
+
+<p>
+The aged precipitate is transferred to a PTFE-lined autoclave and held at 150 °C for 12 h. The hydrothermal treatment homogenizes the cation distribution within the precipitate particles and reduces the concentration of cation vacancies. Without this step, the sintered body has been observed to show local fluctuations in the Abbe number V<sub>d</sub>.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Vessel</td><td>PTFE-lined stainless autoclave, 50% fill</td></tr>
+    <tr><td>Temperature</td><td>150 °C</td></tr>
+    <tr><td>Pressure</td><td>Autogenous (≈ 5 bar)</td></tr>
+    <tr><td>Time</td><td>12 h</td></tr>
+    <tr><td>Heating / cooling rate</td><td>2 °C/min</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3.4 Step 4 — Washing</h3>
+
+<p>
+The hydrothermal product is filtered and washed three times with 0.01 M NH<sub>4</sub>F solution, then once with anhydrous ethanol. The NH<sub>4</sub>F wash suppresses BaF<sub>2</sub> dissolution during washing; DI water alone leaches approximately 0.03% of the Ba. The final ethanol wash removes residual water before drying.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Wash 1–3</td><td>0.01 M NH<sub>4</sub>F, 5 mL per gram of powder, 10 min stirring, filter</td></tr>
+    <tr><td>Wash 4</td><td>Anhydrous ethanol, 5 mL per gram of powder, 10 min stirring, filter</td></tr>
+    <tr><td>Filtration</td><td>PTFE filter, 1 µm pore</td></tr>
+    <tr><td>Vessel</td><td>PTFE; no steel contact</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3.5 Step 5 — Drying</h3>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Temperature</td><td>80 °C</td></tr>
+    <tr><td>Time</td><td>12 h</td></tr>
+    <tr><td>Atmosphere</td><td>Vacuum (≤ 10 mbar) or dry N<sub>2</sub></td></tr>
+    <tr><td>Result</td><td>Free-flowing white powder; no agglomerates &gt; 5 mm</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3.6 Step 6 — Calcination</h3>
+
+<p>
+Calcination converts any residual hydrated fluoride or oxyfluoride to the anhydrous fluoride. <strong>This step is mandatory.</strong> Without it, oxygen (from the co-precipitation water) survives into sintering and forms BaGdOF, a second phase that scatters light and degrades transmission.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Temperature</td><td>500 °C</td></tr>
+    <tr><td>Time</td><td>2 h</td></tr>
+    <tr><td>Atmosphere</td><td>5% HF in N<sub>2</sub> (preferred) or 5% NF<sub>3</sub> in N<sub>2</sub> (alternative)</td></tr>
+    <tr><td>Heating rate</td><td>2 °C/min</td></tr>
+    <tr><td>Cooling</td><td>In N<sub>2</sub>, &lt; 5 °C/min, to &lt; 80 °C before opening</td></tr>
+    <tr><td>Vessel</td><td>Graphite or platinum boat in a graphite tube furnace</td></tr>
+    <tr><td>Exhaust</td><td>Scrubbed (Ca(OH)<sub>2</sub> + acid scrubber for NH<sub>3</sub>)</td></tr>
+    <tr><td>Acceptance</td><td>O &lt; 80 ppm, C &lt; 500 ppm; XRD single-phase cubic fluorite</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3.7 Step 7 — Milling</h3>
+
+<p>
+The calcined powder is milled to break agglomerates and to reduce the primary particle size. <strong>Zirconia media is prohibited.</strong> ZrF<sub>4</sub> is thermodynamically more stable than ZrO<sub>2</sub> and the fluoride slurry will leach Zr from zirconia media, depositing trace Zr into the powder (above the spec). Use BaF<sub>2</sub> or PTFE media.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Media</td><td>BaF<sub>2</sub> or PTFE (no ZrO<sub>2</sub>, no Al<sub>2</sub>O<sub>3</sub>, no steel)</td></tr>
+    <tr><td>Media size</td><td>3 mm</td></tr>
+    <tr><td>Media : powder mass ratio</td><td>10 : 1</td></tr>
+    <tr><td>Liquid</td><td>Anhydrous ethanol (Karl Fischer &lt; 0.05% H<sub>2</sub>O)</td></tr>
+    <tr><td>Solids loading</td><td>30 vol%</td></tr>
+    <tr><td>Mill</td><td>Planetary or attritor, PTFE-lined jar</td></tr>
+    <tr><td>Time</td><td>24 h</td></tr>
+    <tr><td>Speed</td><td>Planetary: 200 rpm; attritor: 400 rpm</td></tr>
+    <tr><td>Result</td><td>d<sub>50</sub> = 0.3–0.6 µm, d<sub>90</sub> &lt; 1.5 µm</td></tr>
+    <tr><td>Acceptance</td><td>Zr &lt; 8 ppm; particle size by laser diffraction</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3.8 Step 8 — Binder addition</h3>
+
+<p>
+<strong>PVA (aqueous) is prohibited.</strong> PVA plus water plus fluoride produces HF and oxide during burnout. Use PVB in ethanol (non-oxide binder) or a stearate lubricant for dry pressing. No aqueous binder at any stage.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Binder</td><td>PVB (polyvinyl butyral), pharmaceutical grade</td></tr>
+    <tr><td>Solvent</td><td>Anhydrous ethanol</td></tr>
+    <tr><td>Binder content</td><td>1.0 wt% of dry powder</td></tr>
+    <tr><td>Mixing</td><td>Roller mill, 2 h, PTFE jar</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3.9 Step 9 — Spray drying</h3>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Inlet temperature</td><td>180 °C</td></tr>
+    <tr><td>Outlet temperature</td><td>90 °C</td></tr>
+    <tr><td>Atomizer</td><td>Rotary disk (20,000 rpm) or two-fluid nozzle</td></tr>
+    <tr><td>Feed rate</td><td>Adjust for outlet T = 90 °C</td></tr>
+    <tr><td>Result</td><td>Spherical granules, 10–50 µm, free-flowing</td></tr>
+    <tr><td>Acceptance</td><td>Particle size by laser diffraction; no agglomerates &gt; 75 µm</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3.10 Step 10 — Binder burnout</h3>
+
+<p>
+<strong>Binder burnout is in argon, not oxygen.</strong> Oxygen plus fluoride plus PVB at 500 °C produces BaO and F<sub>2</sub>, degrading the powder. Argon burnout is slower (carbon residue &lt; 500 ppm rather than &lt; 100 ppm) but preserves the fluoride.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Atmosphere</td><td>Argon 99.999%, inline getter</td></tr>
+    <tr><td>Heating rate</td><td>0.3 °C/min to 500 °C</td></tr>
+    <tr><td>Hold</td><td>2 h at 500 °C</td></tr>
+    <tr><td>Cooling</td><td>5 °C/min to &lt; 80 °C</td></tr>
+    <tr><td>Acceptance</td><td>C &lt; 500 ppm; weight loss matches binder content ± 0.1 wt%</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3.11 Step 11 — Powder QC and release</h3>
+
+<p>
+Every powder lot is characterized before release to green-body formation:
+</p>
+
+<table>
+  <thead>
+    <tr><th>Test</th><th>Acceptance</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>XRD</td><td>Single-phase cubic fluorite; lattice parameter 6.101 ± 0.002 Å; no BaGdF<sub>5</sub>, no BaGdOF</td></tr>
+    <tr><td>ICP-OES (F/(Ba+Gd))</td><td>2.28 ± 0.01</td></tr>
+    <tr><td>ICP-MS (Fe, Cu, Ni, Mn, Cr)</td><td>≤ 80 ppb Fe, ≤ 100 ppb others</td></tr>
+    <tr><td>ICP-MS (Zr, Mo, Ta)</td><td>≤ 8 ppm Zr, ≤ 10 ppm Mo, ≤ 10 ppm Ta</td></tr>
+    <tr><td>Inert-gas fusion (O)</td><td>≤ 80 ppm</td></tr>
+    <tr><td>LECO (C)</td><td>≤ 500 ppm</td></tr>
+    <tr><td>Laser diffraction (D50, D90)</td><td>D50 = 0.3–0.6 µm, D90 &lt; 1.5 µm</td></tr>
+    <tr><td>BET surface area</td><td>5–15 m²/g</td></tr>
+    <tr><td>Tapped density</td><td>≥ 2.0 g/cm³</td></tr>
+  </tbody>
+</table>
+
+<p>
+Lots that pass all checks are released to green-body formation. The powder is stored in the dry glovebox (&lt; 10% RH) in sealed PTFE containers and used within 6 months. Re-characterize any lot older than 6 months before use.
+</p>
+
+<h2>3.4 Powder Production Line Controls</h2>
+
+<ul>
+  <li><strong>No steel contact:</strong> all vessels, tubing, stirrers, filters, mill jars, and drying trays in PTFE, PFA, or high-purity polymer.</li>
+  <li><strong>Dry atmosphere:</strong> all powder handling after calcination is in a glovebox at &lt; 10% RH (preferably &lt; 1% for calcined powder).</li>
+  <li><strong>Dedicated equipment:</strong> no shared mill jars, no shared calcination boats, no shared gloveboxes with oxide or metal powders.</li>
+  <li><strong>Traceability:</strong> every powder lot carries a unique lot number from precursor receipt through release. Retain a sample of each lot for 2 years.</li>
+</ul>
+
+<!-- Continue with Part 4 immediately below this line. -->
+
+<!-- ============================================================
+     PART 4 — SINTERING, HIP, AND ANNEALING
+     ============================================================ -->
+<h1>Part 4 — Sintering, HIP, and Annealing</h1>
+
+<h2>4.1 Overview</h2>
+
+<p>
+The powder is consolidated into a dense, transparent body by a three-step thermal route: cold isostatic pressing (CIP), pressureless sintering in a fluorine-maintaining atmosphere, and hot isostatic pressing (HIP) to remove the last porosity. A stress-relief anneal follows, and the body is cooled slowly to avoid freezing fluorine-vacancy defects. Each step is specified below.
+</p>
+
+<h2>4.2 Step 12 — Cold Isostatic Pressing (CIP)</h2>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Powder mass</td><td>As required for final part + sinter shrinkage (linear shrink 1.18–1.22; typically 1.10 g powder for a 12 mm × 2 mm final disc)</td></tr>
+    <tr><td>Mold</td><td>Polyurethane or rubber boot, vibratory fill, hand-tamped with PTFE rod</td></tr>
+    <tr><td>Pressure</td><td>300 MPa (CIP)</td></tr>
+    <tr><td>Dwell</td><td>5 min at pressure</td></tr>
+    <tr><td>Decompression</td><td>&lt; 10 MPa/min</td></tr>
+    <tr><td>Atmosphere</td><td>Ambient, dry room (&lt; 40% RH)</td></tr>
+    <tr><td>Acceptance</td><td>Green density ≥ 55% theoretical, uniformity ± 0.5% across part (Archimedes on witness samples)</td></tr>
+  </tbody>
+</table>
+
+<h2>4.3 Step 13 — Green-body edge chamfer</h2>
+
+<p>
+The green body is chamfered at the edge to ≥ 0.5 mm before sintering. A sharp green edge tears the HIP capsule; the chamfer removes the edge stress concentration and is the part that survives HIP. This is a hard requirement — the chamfer is not optional.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Chamfer size</td><td>≥ 0.5 mm × 45°</td></tr>
+    <tr><td>Tool</td><td>Diamond file or abrasive paper; no metal blade contact with the green body</td></tr>
+    <tr><td>Inspection</td><td>Optical, 10× magnification, no cracks</td></tr>
+  </tbody>
+</table>
+
+<h2>4.4 Step 14 — Sintering</h2>
+
+<p>
+Pressureless sintering brings the body to closed porosity (≥ 95% density) at a temperature and time that keeps the mean grain size ≤ 100 nm, leaving margin for the HIP growth that follows. The sintering furnace is a graphite tube furnace dedicated to fluoride ceramics.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Furnace</td><td>Graphite tube furnace, dedicated to fluoride (no prior oxide or metal runs; vacuum outgas 1000 °C before first use)</td></tr>
+    <tr><td>Atmosphere</td><td>Argon 99.999% with inline getter (O<sub>2</sub> &lt; 1 ppb, H<sub>2</sub>O &lt; 1 ppb) at 0.1 L/min</td></tr>
+    <tr><td>Fluorine management</td><td>Sacrificial BaF<sub>2</sub> piece in the same hot zone (≥ 10× sample mass, same temperature) — maintains fluorine partial pressure through sinter and cool-down</td></tr>
+    <tr><td>Setter</td><td>Graphite setters only; sample in contact with graphite or with sacrificial BaF<sub>2</sub>; no Al<sub>2</sub>O<sub>3</sub>, no ZrO<sub>2</sub></td></tr>
+    <tr><td>Heating rate</td><td>2 °C/min from RT to 820 °C</td></tr>
+    <tr><td>Sinter temperature</td><td>820 °C (process set-point; see TV1 for line-specific calibration)</td></tr>
+    <tr><td>Sinter time</td><td>4 h at 820 °C</td></tr>
+    <tr><td>Cooling</td><td>1 °C/min to 600 °C, then as anneal program (see § 4.6)</td></tr>
+    <tr><td>Acceptance</td><td>Density ≥ 95% (Archimedes); grain ≤ 100 nm (TEM on witness); no cracking; lattice parameter unchanged</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+<strong>Fluorine retention.</strong> The sacrificial BaF<sub>2</sub> is present at the same temperature as the sample throughout sinter <em>and</em> cool-down. At equal temperature there is no net fluorine flux between them. The sacrificial piece is removed only after the sample is below 300 °C. Do not stop the sacrificial before the sample is cool: an early removal creates a fluorine gradient that pulls fluorine out of the sample and creates F-centers.
+</div>
+
+<h2>4.5 Step 15 — Hot Isostatic Pressing (HIP)</h2>
+
+<p>
+HIP closes the residual porosity left by pressureless sintering and brings the body to ≥ 99.5% density. The HIP capsule is a 100 µm tantalum (Ta) can with a 25 µm molybdenum (Mo) liner. Mo is used as the sample-contacting surface because it is 2.4× more inert than Ta against the fluoride (ΔG(MoF<sub>6</sub>) ≈ +1964 kJ/mol for the capsule reaction vs. +820 kJ/mol for Ta) and because the Mo liner can be removed chemically (HNO<sub>3</sub>/H<sub>2</sub>O<sub>2</sub>) if the sample sticks; the Ta capsule cannot be removed chemically without attacking the part.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Capsule</td><td>Tantalum, 100 µm wall, e-beam welded in glovebox (&lt; 10% RH)</td></tr>
+    <tr><td>Liner</td><td>Molybdenum foil, 25 µm, on the sample side</td></tr>
+    <tr><td>Anti-stick</td><td>BN spray, 1 µm, on the Mo surface facing the sample</td></tr>
+    <tr><td>Internal getter</td><td><strong>None.</strong> Zr or Ti getters are prohibited — they consume fluorine from the sample and create F vacancies.</td></tr>
+    <tr><td>Internal atmosphere</td><td>Argon 99.9999%, no internal purge (sealed evacuated + backfilled)</td></tr>
+    <tr><td>Leak check</td><td>He leak &lt; 1 × 10<sup>−9</sup> mbar·L/s before HIP</td></tr>
+    <tr><td>Temperature</td><td>900 °C</td></tr>
+    <tr><td>Pressure</td><td>150 MPa argon</td></tr>
+    <tr><td>Time</td><td>2 h at temperature and pressure</td></tr>
+    <tr><td>Thermal uniformity</td><td>± 5 °C over the capsule</td></tr>
+    <tr><td>Depressurization</td><td>&lt; 50 bar/min</td></tr>
+    <tr><td>Cooling</td><td>As anneal program (see § 4.6)</td></tr>
+    <tr><td>Post-HIP inspection</td><td>Ta and Mo &lt; 10 ppm each (ICP-MS); no visible sticking; density ≥ 99.5%</td></tr>
+  </tbody>
+</table>
+
+<h2>4.6 Step 16 — Annealing and slow cool</h2>
+
+<p>
+Annealing removes residual stress and allows fluorine vacancies (created at 900 °C) to recombine during cooling. The cooling rate is the single most important parameter for the UV transmission of the finished part: fast cooling freezes F vacancies and creates F-centers, which absorb light near 300–500 nm.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Furnace</td><td>Graphite tube furnace (same as sinter)</td></tr>
+    <tr><td>Atmosphere</td><td>Argon 99.999% with inline getter; sacrificial BaF<sub>2</sub> in same hot zone as sinter</td></tr>
+    <tr><td>Temperature</td><td>600 °C</td></tr>
+    <tr><td>Time</td><td>4 h</td></tr>
+    <tr><td>Cooling rate</td><td>&lt; 30 °C/h from 900 °C to 300 °C after HIP; &lt; 30 °C/h from 600 °C to 300 °C after the sinter anneal</td></tr>
+    <tr><td>Below 300 °C</td><td>Faster cooling permitted (no F-vacancy freeze below 300 °C)</td></tr>
+    <tr><td>Acceptance</td><td>Birefringence &lt; 5 nm/cm; T(300 nm) within variant spec; F/(Ba+Gd) unchanged from sinter (within ± 0.01)</td></tr>
+  </tbody>
+</table>
+
+<h2>4.7 Sinter, HIP, and Anneal — Process Records</h2>
+
+<p>
+Each part carries a process record with the following fields: sinter furnace, sinter run ID, date, temperature profile (from calibrated thermocouple), atmosphere dew-point and oxygen monitor reading, sacrificial BaF<sub>2</sub> mass and position, HIP capsule ID, HIP run ID, anneal program, cooling curve, and density and grain results. The record is retained with the part for 2 years.
+</p>
+
+<h2>4.8 Common Modes of Failure at This Stage</h2>
+
+<table>
+  <thead>
+    <tr><th>Mode</th><th>Root cause</th><th>Countermeasure</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Warping or cracking</td><td>Non-uniform green body; fast pressurization or decompression</td><td>CIP 300 MPa, ≤ 10 MPa/min decompression; HIP ≤ 50 bar/min</td></tr>
+    <tr><td>Second phase (BaGdF<sub>5</sub>, BaGdOF)</td><td>Stoichiometry off; O contamination; F depletion</td><td>Powder QC per § 3.3.11; calcination; sacrificial BaF<sub>2</sub>; no Zr getter</td></tr>
+    <tr><td>Grain &gt; 145 nm</td><td>Sinter T or t too high; HIP T too high</td><td>Stay at sinter set-point; HIP ≤ 900 °C; witness TEM after each run</td></tr>
+    <tr><td>Ta / Mo contamination &gt; 10 ppm</td><td>Capsule reaction; liner breakdown</td><td>BN anti-stick; capsule and liner replaced every run; ICP-MS on every part</td></tr>
+    <tr><td>Low T(300 nm) (F-centers)</td><td>Fast cooling; F depletion</td><td>&lt; 30 °C/h cool; sacrificial BaF<sub>2</sub> through cool-down</td></tr>
+    <tr><td>Scatter &gt; 0.03 /cm</td><td>Residual porosity; boundary Δn too high</td><td>HIP 150 MPa; TEM + EELS on witness</td></tr>
+  </tbody>
+</table>
+
+<!-- Continue with Part 5 immediately below this line. -->
+
+<!-- ============================================================
+     PART 5 — SHAPING AND POLISHING
+     ============================================================ -->
+<h1>Part 5 — Shaping and Polishing</h1>
+
+<h2>5.1 Overview</h2>
+
+<p>
+The sintered and HIPed body is shaped to near-final dimensions by diamond grinding, then polished to the optical figure and surface quality required for coating and use. The polishing step is followed by a short HF etch to remove subsurface damage. Every step in this sequence is specified, and the figure and roughness acceptance criteria apply after each step.
+</p>
+
+<h2>5.2 Step 17 — Diamond grinding</h2>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Grinding mode</td><td>Diamond cup wheel, 400 mesh</td></tr>
+    <tr><td>Coolant</td><td>DI water with a fluoride-compatible inhibitor (no amine, no chlorine)</td></tr>
+    <tr><td>Stock removal</td><td>To final thickness + 100 µm</td></tr>
+    <tr><td>Surface finish after grind</td><td>Ra &lt; 1 µm</td></tr>
+    <tr><td>Subsurface damage</td><td>≤ 50 µm (verified by HF etch pit density or cross-section after production setup)</td></tr>
+    <tr><td>Edge chamfer</td><td>0.2 mm × 45° (final size; the green-body chamfer is the pre-HIP chamfer)</td></tr>
+    <tr><td>Acceptance</td><td>Thickness, diameter, wedge within Part 2 tolerances; no cracks or chips visible at 10×</td></tr>
+  </tbody>
+</table>
+
+<h2>5.3 Step 18 — Chemical-mechanical polishing (CMP)</h2>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Slurry</td><td>Colloidal silica, pH 9 (ammonium-stabilized; no amine, no chlorine)</td></tr>
+    <tr><td>Pad</td><td>Polyurethane CMP pad, no felt backing</td></tr>
+    <tr><td>Pressure</td><td>0.1–0.3 psi (light)</td></tr>
+    <tr><td>Platen speed</td><td>50–100 rpm</td></tr>
+    <tr><td>Stock removal</td><td>≥ 50 µm total (removes grinding damage)</td></tr>
+    <tr><td>Surface finish</td><td>&lt; 1 nm rms (AFM)</td></tr>
+    <tr><td>Figure</td><td>λ/4 at 633 nm over the clear aperture</td></tr>
+    <tr><td>Acceptance</td><td>Roughness, figure, surface quality (20-10 scratch-dig) per Part 2</td></tr>
+  </tbody>
+</table>
+
+<h2>5.4 Step 19 — HF etch (subsurface damage removal)</h2>
+
+<p>
+A short, uniform HF dip removes the residual subsurface damage from CMP and reveals any hidden scratches before coating. The etch is uniform across the surface (rotation during dip) and is verified by interferometry before and after: the figure must not change by more than λ/10.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Solution</td><td>1% HF (vol/vol) in DI water</td></tr>
+    <tr><td>Temperature</td><td>20 °C</td></tr>
+    <tr><td>Time</td><td>30 s</td></tr>
+    <tr><td>Agitation</td><td>Rotation at 60 rpm during dip</td></tr>
+    <tr><td>Removal</td><td>0.15–1.5 µm (line-specific; etch rate 5–50 nm/s on BaF<sub>2</sub>)</td></tr>
+    <tr><td>Rinse</td><td>DI water 30 s, then anhydrous ethanol 30 s, then N<sub>2</sub> dry</td></tr>
+    <tr><td>Post-etch figure</td><td>Change &lt; λ/10 from pre-etch</td></tr>
+    <tr><td>Acceptance</td><td>Figure, roughness, surface quality per Part 2</td></tr>
+  </tbody>
+</table>
+
+<div class="warn">
+<strong>HF hazard.</strong> HF is a corrosive and systemically toxic acid. It penetrates skin and attacks bone. The etch bench must be a dedicated HF bench with calcium gluconate gel, a face shield, and HF-rated gloves and apron. See Part 12 for the full safety requirements.
+</div>
+
+<h2>5.5 Step 20 — Plasma clean</h2>
+
+<p>
+Immediately before coating, the polished and etched element — including the cylindrical side — is plasma-cleaned to remove adsorbed hydrocarbon and to provide a low contact angle for the subsequent coating.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Plasma</td><td>Ar/O<sub>2</sub>, 100 W RF</td></tr>
+    <tr><td>Pressure</td><td>0.1 mbar</td></tr>
+    <tr><td>Time</td><td>5 min</td></tr>
+    <tr><td>Result</td><td>Contact angle &lt; 30° (water)</td></tr>
+  </tbody>
+</table>
+
+<h2>5.6 Shaping and Polishing — Failure Modes</h2>
+
+<table>
+  <thead>
+    <tr><th>Mode</th><th>Root cause</th><th>Countermeasure</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Scratches &gt; 20-10</td><td>Coarse slurry or contaminated pad</td><td>Slurry particle size verified; pad changed per run</td></tr>
+    <tr><td>Figure &gt; λ/4</td><td>Non-uniform CMP pressure or pad wear</td><td>Uniform pressure; pad conditioning</td></tr>
+    <tr><td>Subsurface damage persists</td><td>CMP stock removal too small</td><td>≥ 50 µm stock removal; HF etch after CMP</td></tr>
+    <tr><td>Chipping at edge</td><td>Grinding damage or chamfer too small</td><td>Chamfer ≥ 0.15 mm; grinding depth controlled</td></tr>
+    <tr><td>Figure change &gt; λ/10 after etch</td><td>Non-uniform etch</td><td>Rotation and uniform flow at the HF bench</td></tr>
+  </tbody>
+</table>
+
+<!-- ============================================================
+     PART 6 — COATING
+     ============================================================ -->
+<h1>Part 6 — Coating</h1>
+
+<h2>6.1 Overview</h2>
+
+<p>
+The coating stack provides three functions at once: (i) mechanical protection and chemical hermeticity (adhesion layer + outer hard layer), (ii) anti-reflection over the visible and near-IR band, and (iii) UV blocking in the standard variant (a UV mirror above 300 nm). The two variants (VIS/UVBLOCK and UVTRANSMIT) share the adhesion and hard layers and differ only in the presence of the UV mirror.
+</p>
+
+<h2>6.2 The Seed Layer and ALD Al₂O₃</h2>
+
+<p>
+The fluoride surface is fluorine-terminated and does not carry the hydroxyl groups that standard ALD chemistry requires for nucleation. A thin aluminium seed layer is deposited first and fully oxidized to provide a hydroxylated surface for the subsequent ALD Al<sub>2</sub>O<sub>3</sub> film.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Al seed thickness</td><td>2 nm (e-beam evaporation)</td></tr>
+    <tr><td>Al seed oxidation</td><td>O<sub>2</sub> plasma 5 min, or 150 °C / 1 h in O<sub>2</sub></td></tr>
+    <tr><td>Seed verification</td><td>Ellipsometry: n = 1.65 ± 0.03, t = 3.5 ± 0.5 nm (fully oxidized Al<sub>2</sub>O<sub>3</sub>)</td></tr>
+    <tr><td>ALD Al<sub>2</sub>O<sub>3</sub> thickness</td><td>200 nm</td></tr>
+    <tr><td>ALD temperature</td><td>150 °C</td></tr>
+    <tr><td>ALD precursors</td><td>TMA + H<sub>2</sub>O</td></tr>
+    <tr><td>Pinhole check</td><td>Cu-decoration test, no visible pinholes</td></tr>
+    <tr><td>Function</td><td>Adhesion, hermetic edge seal, chemical barrier</td></tr>
+    <tr><td>Edge-seal coverage</td><td>The Al seed and ALD Al<sub>2</sub>O<sub>3</sub> cover the entire external surface: both flat faces (including the mounting zones) and the cylindrical side. Deposit the Al seed with the part in a rotating planetary fixture to cover the side. The barrier must be continuous from face to face across the side. Mask the mounting zones from the optical AR and UV-mirror coatings, but not from the Al seed or ALD coating.</td></tr>
+  </tbody>
+</table>
+
+<h2>6.3 The UV-Blocking Variant (Standard): HfO₂/SiO₂ UV Mirror</h2>
+
+<p>
+The UV mirror reflects 250–350 nm light back out of the element and prevents UV from reaching the substrate. TiO<sub>2</sub> is prohibited (its band gap at 3.2 eV absorbs the UV and photocatalytically degrades adjacent layers); HfO<sub>2</sub> is used instead (band gap 5.8 eV, transparent at 300 nm, hard, non-photocatalytic). The mirror is placed on the air side of the stack, with an SiO<sub>2</sub> overcoat outside it.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Material</td><td>HfO<sub>2</sub> (n ≈ 2.0) / SiO<sub>2</sub> (n ≈ 1.46)</td></tr>
+    <tr><td>Design wavelength</td><td>300 nm</td></tr>
+    <tr><td>Number of quarter-wave pairs</td><td>15</td></tr>
+    <tr><td>Total thickness</td><td>~1335 nm</td></tr>
+    <tr><td>Deposition</td><td>IAD (ion-assisted deposition), substrate &lt; 100 °C, ion energy 50–150 eV</td></tr>
+    <tr><td>Result</td><td>T(300 nm) &lt; 0.1% in the element transmission</td></tr>
+  </tbody>
+</table>
+
+<h2>6.4 The Anti-Reflection Stack</h2>
+
+<p>
+The AR stack is a six-layer MgF<sub>2</sub>/LaF<sub>3</sub> design, designed for T ≥ 0.85 over 400–700 nm (VIS/UVBLOCK variant) or 300–700 nm (UVTRANSMIT variant). MgF<sub>2</sub> is compressive, LaF<sub>3</sub> is tensile; alternating them balances the film stress.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Layers</td><td>6 (3 MgF<sub>2</sub> + 3 LaF<sub>3</sub>, alternating)</td></tr>
+    <tr><td>Total thickness</td><td>~1000 nm</td></tr>
+    <tr><td>Design band</td><td>400–700 nm (VIS/UVBLOCK) or 300–700 nm (UVTRANSMIT)</td></tr>
+    <tr><td>Deposition</td><td>IAD, substrate &lt; 100 °C, ion energy 50–150 eV</td></tr>
+    <tr><td>Net film stress</td><td>≤ 100 MPa (verified by curvature, sag &lt; 0.06 µm over 20 mm)</td></tr>
+    <tr><td>Result</td><td>T(500 nm) ≥ 0.85; average T ≥ 0.90 over design band</td></tr>
+  </tbody>
+</table>
+
+<h2>6.5 The SiO₂ Overcoat</h2>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Material</td><td>SiO<sub>2</sub></td></tr>
+    <tr><td>Thickness</td><td>100 nm</td></tr>
+    <tr><td>Deposition</td><td>IAD, substrate &lt; 100 °C</td></tr>
+    <tr><td>Function</td><td>Mechanical hard layer, final AR layer</td></tr>
+    <tr><td>Result</td><td>Hardness ≥ 2H; adhesion tape test pass</td></tr>
+  </tbody>
+</table>
+
+<h2>6.6 Coating Stack Summary</h2>
+
+<table>
+  <thead>
+    <tr><th>Variant</th><th>Stack (from substrate out)</th><th>Total thickness</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BGF-28-VIS/UVBLOCK</td>
+      <td>Al seed 2 nm / ALD Al<sub>2</sub>O<sub>3</sub> 200 nm / HfO<sub>2</sub>-SiO<sub>2</sub> UV mirror 1335 nm / AR MgF<sub>2</sub>-LaF<sub>3</sub> 1000 nm / SiO<sub>2</sub> 100 nm</td>
+      <td>~2640 nm</td>
+    </tr>
+    <tr>
+      <td>BGF-28-UVTRANSMIT</td>
+      <td>Al seed 2 nm / ALD Al<sub>2</sub>O<sub>3</sub> 200 nm / AR MgF<sub>2</sub>-LaF<sub>3</sub> 1000 nm / SiO<sub>2</sub> 100 nm</td>
+      <td>~1300 nm</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6.7 Final Figure Check and Coating Adhesion</h2>
+
+<table>
+  <thead>
+    <tr><th>Test</th><th>Acceptance</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Figure after all coatings</td><td>λ/4 at 633 nm over the clear aperture; sag &lt; 0.06 µm over 20 mm</td></tr>
+    <tr><td>Coating adhesion</td><td>Tape test (ASTM D3359) pass; 100% of coating intact after tape peel</td></tr>
+    <tr><td>Hardness</td><td>Pencil hardness ≥ 2H (ASTM D3363)</td></tr>
+    <tr><td>Spectrophotometric transmission</td><td>Meets variant spec (T(300), T(500), T(1–5 µm))</td></tr>
+    <tr><td>Coating scratch-dig</td><td>20-10 over clear aperture</td></tr>
+  </tbody>
+</table>
+
+<p>
+Coated elements that fail the final figure check are <strong>scrapped</strong>, not reworked. Stripping ALD Al<sub>2</sub>O<sub>3</sub> from the fluoride requires HF or plasma etch, both of which attack the substrate and remove material from the polished surface. Rework is not economical at this stage.
+</p>
+
+<h2>6.8 Coating — Failure Modes</h2>
+
+<table>
+  <thead>
+    <tr><th>Mode</th><th>Root cause</th><th>Countermeasure</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>ALD film pinholes</td><td>Incomplete seed oxidation; contamination</td><td>O<sub>2</sub> plasma on seed; Cu-decoration test</td></tr>
+    <tr><td>UV mirror absorbing</td><td>TiO<sub>2</sub> contamination; oxygen-deficient HfO<sub>2</sub></td><td>Stoichiometric HfO<sub>2</sub> targets; IAD O<sub>2</sub> flow</td></tr>
+    <tr><td>AR delamination</td><td>Poor adhesion at seed or overcoat</td><td>Plasma clean; tape test per element</td></tr>
+    <tr><td>Film stress sag &gt; 0.06 µm</td><td>Unbalanced MgF<sub>2</sub> / LaF<sub>3</sub> thicknesses</td><td>Balance the stack; measure curvature on witness</td></tr>
+    <tr><td>Figure drift after coating</td><td>Film stress accumulates</td><td>Pre-measure figure; adjust stack if within 50% of λ/4</td></tr>
+    <tr><td>Chamber contamination</td><td>Fluoride outgassing from prior runs</td><td>Load-lock; sacrificial fluoride plate in chamber; slow pump-down</td></tr>
+  </tbody>
+</table>
+
+<!-- Continue with Part 7 immediately below this line. -->
+
+<!-- ============================================================
+     PART 7 — MOUNTING AND ASSEMBLY
+     ============================================================ -->
+<h1>Part 7 — Mounting and Assembly</h1>
+
+<h2>7.1 Overview</h2>
+
+<p>
+The element is mounted in a two-part barrel: an outer barrel that sets the lens-to-sensor distance and provides the athermalization correction, and an inner ring that holds the ceramic element. The element is held axially by a hard machined shoulder and a Belleville-washer-loaded retainer; it is centered radially by a thin silicone ring. The mounting is designed so that the ceramic is never in tension in service and so that the silicone does not creep into the axial optical path.
+</p>
+
+<h2>7.2 Barrel Materials and Geometry</h2>
+
+<table>
+  <thead>
+    <tr><th>Component</th><th>Material</th><th>CTE</th><th>Function</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Outer barrel</td>
+      <td>PBT-GF30 (30% glass-filled polybutylene terephthalate)</td>
+      <td>35 ± 2 ppm/K (accept window 33–37 ppm/K, measured on barrel axis)</td>
+      <td>Sets the lens-to-sensor distance. Calculated residual thermal defocus across the stated element and barrel tolerances is approximately <strong>−6.3 to +14.6 µm</strong> at f = 50 mm over ΔT = 30 K. This is within the stated diffraction depth of focus at f/4 and slower. Fixed-focus at f/2.8 requires individual thermal qualification of the element–barrel assembly; the available 33–37 ppm/K barrel window cannot compensate every allowed element to the stated f/2.8 criterion. For f/2 and faster, active autofocus is required.</td>
+    </tr>
+    <tr>
+      <td>Inner ring</td>
+      <td>316 stainless steel</td>
+      <td>17 ppm/K</td>
+      <td>Holds the ceramic. CTE matched to the ceramic (18 ppm/K), keeping the element in low-level compression through the operating range. Hard-stop flatness ≤ 2 µm over the 10 mm contact area; surface finish Ra ≤ 0.4 µm.</td>
+    </tr>
+    <tr>
+      <td>Retainer</td>
+      <td>316 stainless steel</td>
+      <td>17 ppm/K</td>
+      <td>Axial retention through the Belleville washer.</td>
+    </tr>
+    <tr>
+      <td>Belleville washer</td>
+      <td>302 stainless steel</td>
+      <td>17 ppm/K</td>
+      <td>Maintains constant preload as RTV creeps.</td>
+    </tr>
+    <tr>
+      <td>Radial ring</td>
+      <td>Platinum-cure silicone RTV, 0.2 mm thick</td>
+      <td>~ 200 ppm/K</td>
+      <td>Centers the element; provides shock isolation; does not carry axial load.</td>
+    </tr>
+    <tr>
+      <td>Shock ring</td>
+      <td>EPDM, 1 mm thick, 20% compression</td>
+      <td>~ 150 ppm/K</td>
+      <td>Radial shock absorption under drop and vibration.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+The outer barrel's external interface (mounting thread, flange, or slip-fit diameter) is specified by the customer for the instrument. No particular external interface is included in the standard unmounted Tier 1 element; the interface of a supplier-supplied barrel must be agreed before manufacture.
+</p>
+
+<h2>7.3 Assembly Sequence</h2>
+
+<ol>
+  <li><strong>Sub-assembly cleaning.</strong> Clean the SS316 inner ring, retainer, and barrel in an ultrasonic bath (IPA, 5 min). Dry in N<sub>2</sub>. All parts handled in an ISO Class 7 cleanroom.</li>
+  <li><strong>RTV application.</strong> Apply platinum-cure silicone RTV to the inner ring in a 0.2 mm-thick annular bead at the mounting zone location. The bead is recessed behind a lip on the inner ring so it is not in line-of-sight to the clear aperture.</li>
+  <li><strong>Element placement.</strong> Place the ceramic element on the axial hard stop of the inner ring. Verify it seats fully; no rocking.</li>
+  <li><strong>RTV cure.</strong> Cure at room temperature for 24 h (or 60 °C for 2 h, then room temperature 12 h). Do not cure at ≥ 100 °C (the RTV would be cured while the SS/ceramic CTE mismatch loads the bond).</li>
+  <li><strong>Retainer installation.</strong> Install the SS316 retainer with a Belleville washer between the retainer and the element. Torque to 0.1 N·m. Apply Loctite 222 (low-strength thread-locker) to the retainer threads before torquing. Install a safety wire through the retainer and the inner ring.</li>
+  <li><strong>Barrel assembly.</strong> Install the inner ring sub-assembly into the outer PBT-GF30 barrel. The interface is a slip fit with a thin compliant pad (0.1 mm EPDM) that decouples the CTE mismatch between the two parts.</li>
+  <li><strong>Alignment.</strong> Set the lens-to-sensor distance per the instrument optical design. Lock with an M3 × 0.5 flat-point barrel set screw with a pre-applied nylon locking patch. Its threads are in the PBT-GF30 outer barrel and its tip bears on the SS316 inner ring. Torque the screw to 0.1 N·m and install a safety wire between the screw head and a suitable barrel anchor. Do not apply liquid anaerobic thread-locker to the PBT-GF30 threads. Verify the residual focus shift against the thermal model (see § 8.6); assemblies intended for fixed-focus f/2.8 require individual thermal qualification.</li>
+  <li><strong>Final inspection.</strong> Visual: no debris on the clear aperture. Functional: transmission at 500 nm (per Part 6). Mechanical: retainer and barrel set-screw installation torques recorded (0.1 N·m ± 10% each); safety wires intact; no RTV visible on the clear aperture. Mark the assembly with the batch code.</li>
+</ol>
+
+<h2>7.4 Handling and Cleanliness at Assembly</h2>
+
+<ul>
+  <li>All assembly steps in ISO Class 7 cleanroom (or better) or in a laminar-flow hood.</li>
+  <li>Cleanroom garments (coverall, hood, booties, nitrile gloves) for all personnel.</li>
+  <li>No ester, mineral, or silicone oils in the assembly area. All lubricants must be PFPE (perfluoropolyether).</li>
+  <li>No acid-cure silicone RTV anywhere in the assembly area (acetic-acid cure would attack the fluoride).</li>
+  <li>Nitrogen purge of the clean hood before mounting the element.</li>
+</ul>
+
+<h2>7.5 Mount — Failure Modes</h2>
+
+<table>
+  <thead>
+    <tr><th>Mode</th><th>Root cause</th><th>Countermeasure</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Retainer relaxation over 10 y</td><td>Thread creep or vibrational loosening</td><td>Loctite 222 + safety wire; Belleville washer maintains preload; retainer torque verified on 10% of units</td></tr>
+    <tr><td>Set-screw rotation under vibration</td><td>Unlocked set screw rotates and loses preload</td><td>Pre-applied nylon locking patch + safety wire; retention checked after vibration per § 9.3</td></tr>
+    <tr><td>RTV creep in axial path</td><td>RTV under continuous load</td><td>RTV is radial only; the axial position is set by a hard shoulder; Belleville maintains axial preload</td></tr>
+    <tr><td>Thermal-shock cracking</td><td>Fast thermal ramp under constrained mount</td><td>SS316 ring keeps the element in compression; RTV and EPDM absorb the residual mismatch; ramp rate in operation per § 8.1</td></tr>
+    <tr><td>Point contact from retainer</td><td>Retainer not flat; burred edge</td><td>Retainer flatness verified; edge deburred; compliant PTFE pad between retainer and element</td></tr>
+    <tr><td>RTV wicking into clear aperture</td><td>Bead applied too close to edge; capillary action</td><td>RTV bead recessed behind lip; no RTV in line-of-sight to clear aperture</td></tr>
+  </tbody>
+</table>
+
+<p>
+The outer barrel is PBT-GF30, which is inherently resistant to salt fog, and the SS316 inner ring is pitting-resistant at 96 h (verified per § 10.3). No special barrel protection is required.
+</p>
+
+<!-- ============================================================
+     PART 8 — OPERATION
+     ============================================================ -->
+<h1>Part 8 — Operation</h1>
+
+<h2>8.1 Operating Envelope</h2>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Range</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Operating temperature</td><td>+5 °C to +35 °C</td><td>Standard product. Outside this range the athermalization must be re-evaluated.</td></tr>
+    <tr><td>Storage temperature</td><td>15 – 30 °C (recommended); −20 to +50 °C (survival, unmounted element only)</td><td>RTV and EPDM have their own temperature limits; the mounted assembly range is the narrow one.</td></tr>
+    <tr><td>Operating relative humidity</td><td>&lt; 40% RH</td><td>Below this, no moisture ingress into any part of the stack is expected.</td></tr>
+    <tr><td>Thermal ramp rate</td><td>≤ 1 °C/min</td><td>Larger ramps are permitted but the survival probability is not specified beyond this rate.</td></tr>
+    <tr><td>Maximum uniform thermal shock</td><td>ΔT &lt; 30 K in one step</td><td>Above this the ceramic may see transient tensile stress through the mount. For ΔT &gt; 30 K, ramp at ≤ 1 °C/min.</td></tr>
+  </tbody>
+</table>
+
+<h2>8.2 UV Exposure</h2>
+
+<p>
+In the <strong>VIS/UVBLOCK</strong> variant, UV below 350 nm is reflected by the UV mirror and does not reach the substrate. The element is safe under continuous UV illumination within its transmission band (T(300 nm) &lt; 0.1%, by design).
+</p>
+
+<p>
+In the <strong>UVTRANSMIT</strong> variant, UV reaches the substrate. Sustained UV exposure at 300 nm is limited to &lt; 1 mW/cm² for long-term operation (&gt; 1000 h), or &lt; 10 mW/cm² for short exposure (&lt; 1 h). Above these limits, either the exposure time is reduced or the VIS/UVBLOCK variant is selected. Bulk operation at higher UV fluence is a higher-tier offering (see Part 13).
+</p>
+
+<h2>8.3 Cleaning</h2>
+
+<table>
+  <thead>
+    <tr><th>Step</th><th>Procedure</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1. Blow-off</td><td>Dry N<sub>2</sub> or clean dry air; hold the element at the edge, not the clear aperture</td></tr>
+    <tr><td>2. First wipe</td><td>Lint-free lens tissue, 2 drops of IPA (isopropyl alcohol); wipe in one direction; discard tissue after one pass</td></tr>
+    <tr><td>3. Second wipe</td><td>Fresh tissue, 2 drops of acetone (or IPA if acetone is not permitted by the instrument); same procedure</td></tr>
+    <tr><td>4. Dry</td><td>Dry N<sub>2</sub>; verify no visible streaks</td></tr>
+    <tr><td>5. Solvent prohibition</td><td>Do not use amine cleaners, aromatic solvents, or chlorinated solvents. Do not use ester or mineral oils in the same cleaning station.</td></tr>
+    <tr><td>6. Mounted assembly</td><td>When cleaning the mounted assembly, use IPA (not acetone) if the RTV is exposed. Acetone attacks the silicone RTV; PBT-GF30 is acetone-resistant, but the RTV is not.</td></tr>
+    <tr><td>7. Durability</td><td>The element is qualified for 100 IPA wipe cycles with ΔT &lt; 0.5%. Beyond 100 wipes the AR coating is expected to show wear.</td></tr>
+  </tbody>
+</table>
+
+<h2>8.4 Lubricants</h2>
+
+<p>
+Only PFPE (perfluoropolyether) lubricants may be used in the vicinity of the element. Ester, mineral, and silicone oils are prohibited near the element because they can migrate to the clear aperture and leave a non-removable haze. If a grease is required at the barrel set screw or the focus mechanism, it must be a PFPE grease (e.g., a PFPE base oil thickened with PTFE).
+</p>
+
+<h2>8.5 Handling</h2>
+
+<ul>
+  <li>Hold the element by the mounting zone, never the clear aperture.</li>
+  <li>Do not touch the clear aperture with metal tools, gloves, or fingers.</li>
+  <li>Do not stack elements without individual packing.</li>
+  <li>If the element is dropped, inspect for cracks before remounting; a cracked element cannot be repaired.</li>
+</ul>
+
+<h2>8.6 Athermalization</h2>
+
+<p>
+The element has a <strong>low</strong> thermo-optic coefficient (|dn/dT| ≈ 1 × 10⁻⁵/K, about 10× lower than polymer) but it is <strong>not self-athermal</strong>. At f = 50 mm over ΔT = 30 K, calculated bare-material thermal defocus is <strong>+56.7 µm at nominal element parameters</strong> (focal length increases on warming). Across the stated element tolerances (α = 17–19 ppm/K, dn/dT = −0.8 to −1.2 × 10⁻⁵/K), calculated bare-material defocus ranges from approximately <strong>+49.3 to +64.1 µm</strong>. The system must compensate this by one of:
+</p>
+
+<table>
+  <thead>
+    <tr><th>System type</th><th>Athermalization method</th><th>Residual focus shift at f = 50 mm, ΔT = 30 K</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Autofocus system</td><td>Active autofocus</td><td>Corrected by autofocus, subject to the instrument's autofocus performance</td></tr>
+    <tr><td>Fixed-focus, f/4 or slower</td><td><strong>PBT-GF30 barrel</strong> (35 ± 2 ppm/K; accept window 33–37 ppm/K)</td><td>Approximately −6.3 to +14.6 µm across the stated element and barrel tolerance windows; within the stated f/4 diffraction depth of focus of ±16 µm</td></tr>
+    <tr><td>Fixed-focus, f/2.8</td><td><strong>Individually qualified element–barrel assembly</strong></td><td>Must be measured to lie within the stated f/2.8 diffraction depth of focus of ±7.84 µm. Selecting a barrel only within the 33–37 ppm/K window cannot guarantee this for every allowed element; some combinations must be rejected or use autofocus.</td></tr>
+    <tr><td>Fixed-focus, f/2 or faster</td><td>Active autofocus</td><td>Corrected by autofocus, subject to the instrument's autofocus performance</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+<strong>Important — tolerance and aperture.</strong> Under the stated model, the PBT-GF30 barrel supplies approximately 49.5–55.5 µm of compensation across its 33–37 ppm/K CTE window. Combined with the element range of +49.3 to +64.1 µm, the calculated residual spans approximately −6.3 to +14.6 µm. This fits the stated ±16 µm f/4 criterion but not the ±7.84 µm f/2.8 criterion for every unit. At the high end of the element range, even a 37 ppm/K barrel leaves approximately +8.6 µm residual. Fixed-focus f/2.8 therefore requires individual thermal qualification and rejection of assemblies outside its focus criterion; barrel matching alone is not a full-tolerance guarantee. Aluminum barrels (23 ppm/K) provide about 34.5 µm of compensation, leaving approximately +14.8 to +29.6 µm residual. They are not recommended for fixed-focus at f/4 or faster across the full element tolerance, but may meet the stated ±31.4 µm f/5.6 criterion. Bonded bimetal aluminum/polycarbonate barrels were investigated and rejected: unfilled polycarbonate creeps under load and absorbs moisture, producing ~10 µm of focus drift over a 10-year life. PBT-GF30 is the standard fixed-focus barrel; measure its axial CTE per lot and reject barrels outside 33–37 ppm/K.
+</div>
+
+<h2>8.7 Dispersion Data</h2>
+
+<p>
+The nominal two-term Cauchy curve below is calculated to reproduce n<sub>d</sub> = 1.505 at 587.6 nm and V<sub>d</sub> = 62 using the F and C spectral lines. It is for preliminary optical design over 450–700 nm; it is not a measured full dispersion curve.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Form</th><th>Nominal coefficients</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>n(λ) = A + B/λ², λ in µm</td><td>A ≈ 1.492647; B ≈ 0.0042653 µm²</td></tr>
+    <tr><td>n(λ) = A + B/λ², λ in nm</td><td>A ≈ 1.492647; B ≈ 4265.3 nm²</td></tr>
+  </tbody>
+</table>
+
+<p>
+The element is supplied with a two-term dispersion curve based on its measured n<sub>d</sub> and V<sub>d</sub>, stated as valid over 450–700 nm with ± 0.005 in n. Outside that band, do not extrapolate the Cauchy form for optical qualification. The full measured dispersion curve required for full apochromatic design of a multi-element system is not part of this Tier 1 product; it is a higher-tier offering (see Part 13).
+</p>
+
+<h2>8.8 In-Service Limits</h2>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Limit</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Proof-tested maximum service stress</td><td>≤ 12.5 MPa (from proof at 25 MPa with a safety factor of 2)</td></tr>
+    <tr><td>Maximum mechanical load</td><td>Per mount specification (see Part 7); retainer torque 0.1 N·m fixed</td></tr>
+    <tr><td>Maximum continuous UV (UVTRANSMIT variant)</td><td>&lt; 1 mW/cm² sustained, or &lt; 10 mW/cm² for &lt; 1 h continuous exposure, at 300 nm</td></tr>
+    <tr><td>Maximum continuous thermal load</td><td>Per § 8.1</td></tr>
+    <tr><td>Maximum sustained stress from any source</td><td>≤ 10% proof strength (safe for a 10-year life at 25 °C)</td></tr>
+  </tbody>
+</table>
+
+<!-- Continue with Part 9 immediately below this line. -->
+
+<!-- ============================================================
+     PART 9 — QUALITY CONTROL PLAN
+     ============================================================ -->
+<h1>Part 9 — Quality Control Plan</h1>
+
+<h2>9.1 Philosophy</h2>
+
+<p>
+Quality is established by the process, verified by measurement, and enforced by acceptance criteria. Every element is tested against the optical and mechanical specs. Every lot is tested against the material and environmental specs. Every batch (input powder) is tested against the chemistry specs. The plan below is the complete test schedule; no acceptance criterion is left to a "typical" or "representative" value.
+</p>
+
+<h2>9.2 Every-Element Tests (100%)</h2>
+
+<table>
+  <thead>
+    <tr><th>Test</th><th>Acceptance</th><th>Reference</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Visual inspection</td><td>20-10 scratch-dig; no chips; no cracks</td><td>Part 2 § 2.2.5</td></tr>
+    <tr><td>Dimensions</td><td>Per Part 2 § 2.2.5</td><td>Part 2 § 2.2.5</td></tr>
+    <tr><td>Density (Archimedes)</td><td>≥ 99.5% theoretical (≥ 5.39 g/cm³)</td><td>Part 2 § 2.2.2</td></tr>
+    <tr><td>Refractive index n<sub>d</sub></td><td>1.504 – 1.506</td><td>Part 2 § 2.2.3</td></tr>
+    <tr><td>Abbe number V<sub>d</sub></td><td>61 – 63</td><td>Part 2 § 2.2.3</td></tr>
+    <tr><td>Surface figure</td><td>λ/4 at 633 nm over clear aperture; sag &lt; 0.06 µm over 20 mm (after coating)</td><td>Part 6 § 6.7</td></tr>
+    <tr><td>Scatter coefficient</td><td>≤ 0.03 /cm at 500 nm</td><td>Part 2 § 2.2.3</td></tr>
+    <tr><td>Transmission T(500 nm)</td><td>≥ 0.85 (both variants)</td><td>Part 2 § 2.2.3</td></tr>
+    <tr><td>Transmission T(300 nm)</td><td>&lt; 0.001 (VIS/UVBLOCK); ≥ 0.55 (UVTRANSMIT)</td><td>Part 2 § 2.2.3</td></tr>
+    <tr><td>Adhesion (tape test)</td><td>Pass (100% coating intact after peel)</td><td>Part 6 § 6.7</td></tr>
+    <tr><td>Ta, Mo content</td><td>≤ 10 ppm each</td><td>Part 2 § 2.2.1</td></tr>
+    <tr><td>Proof test</td><td>Survive the qualified fixture load corresponding to 25 MPa nominal peak biaxial stress. The nominal calculation uses ΔP = 3.3 MPa, effective support radius 5.0 mm, and thickness 2.0 mm; account for actual thickness and fixture geometry per Part 10.</td><td>Part 10 § 10.1</td></tr>
+    <tr><td>Final figure after mounting, where mounting is ordered</td><td>λ/4 at 633 nm over clear aperture</td><td>Part 7</td></tr>
+  </tbody>
+</table>
+
+<h2>9.3 Every-Lot Tests</h2>
+
+<table>
+  <thead>
+    <tr><th>Test</th><th>Acceptance</th><th>Sample size per lot</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>XRD (phase)</td><td>Single-phase cubic fluorite; no BaGdF<sub>5</sub>, no BaGdOF; lattice parameter 6.098 – 6.102 Å</td><td>3 discs</td></tr>
+    <tr><td>Grain size (TEM)</td><td>Mean ≤ 145 nm, σ<sub>log</sub> ≤ 0.15</td><td>1 disc, 5 fields</td></tr>
+    <tr><td>Boundary Δn (EELS)</td><td>≤ 3 × 10⁻⁴</td><td>1 disc</td></tr>
+    <tr><td>Refractive index homogeneity (interferometry)</td><td>≤ 1 × 10⁻⁴ over clear aperture</td><td>1 disc</td></tr>
+    <tr><td>Weibull flexural strength (ring-on-ring)</td><td>σ<sub>0</sub> ≥ 80 MPa, m ≥ 6</td><td>30 discs (at lot release)</td></tr>
+    <tr><td>Roughness (AFM)</td><td>&lt; 1 nm rms</td><td>1 disc</td></tr>
+    <tr><td>Pencil hardness</td><td>≥ 2H</td><td>1 disc</td></tr>
+    <tr><td>Birefringence</td><td>&lt; 5 nm/cm</td><td>1 disc</td></tr>
+    <tr><td>85/85/1000 h humidity</td><td>Δm &lt; 0.1%, no haze</td><td>3 discs</td></tr>
+    <tr><td>121 °C / 100% RH / 100 h</td><td>ΔT &lt; 1%, no haze</td><td>3 discs</td></tr>
+    <tr><td>500 h @ 35 °C aging</td><td>No second phase by XRD, scatter change &lt; 5%</td><td>3 discs</td></tr>
+    <tr><td>Thermal cycling (−20 to +60 °C, 100 cycles)</td><td>No cracks; transmission change &lt; 1%</td><td>3 discs</td></tr>
+    <tr><td>Vibration (10–2000 Hz, 1 g rms, 2 h/axis)</td><td>No crack or alignment drift &gt; 0.1 mrad; no movement of barrel set screw or retainer witness marks; safety wires intact. Record installation torque for both fasteners at 0.1 N·m ± 10%. Any separate post-test retention-torque measurement must use a qualified procedure that does not loosen the fastener.</td><td>3 mounted assemblies</td></tr>
+    <tr><td>Drop (1.5 m, 6 faces, mounted)</td><td>No crack, no shift &gt; 0.1 mrad</td><td>3 mounted assemblies</td></tr>
+    <tr><td>Cleaning wear (100 IPA wipes)</td><td>ΔT &lt; 0.5%</td><td>3 discs</td></tr>
+    <tr><td>Salt fog (MIL-STD-810 method 509, 96 h)</td><td>No visible degradation</td><td>3 mounted assemblies</td></tr>
+    <tr><td>Fungus (MIL-STD-810 method 508, 28 days)</td><td>No growth on any surface</td><td>3 mounted assemblies</td></tr>
+  </tbody>
+</table>
+
+<h2>9.4 Every-Batch Tests</h2>
+
+<table>
+  <thead>
+    <tr><th>Test</th><th>Acceptance</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>ICP-OES F/(Ba+Gd)</td><td>2.28 ± 0.01</td></tr>
+    <tr><td>ICP-MS Fe</td><td>≤ 80 ppb</td></tr>
+    <tr><td>ICP-MS Cu, Ni, Mn, Cr</td><td>≤ 100 ppb each</td></tr>
+    <tr><td>ICP-MS Zr, Mo, Ta</td><td>≤ 8 ppm Zr; ≤ 10 ppm Mo; ≤ 10 ppm Ta</td></tr>
+    <tr><td>ICP-MS Eu, Tb, Sm</td><td>&lt; 1 ppm each</td></tr>
+    <tr><td>Inert-gas fusion O</td><td>≤ 80 ppm</td></tr>
+    <tr><td>LECO combustion C</td><td>≤ 500 ppm</td></tr>
+    <tr><td>XRD</td><td>Single-phase cubic fluorite</td></tr>
+    <tr><td>Laser diffraction particle size</td><td>D50 = 0.3–0.6 µm; D90 &lt; 1.5 µm</td></tr>
+  </tbody>
+</table>
+
+<h2>9.5 Records</h2>
+
+<p>
+Every element carries a unique serial number. The record for each element contains: batch (powder lot) ID, HIP run ID, sinter run ID, coating run ID, all measured values, all pass/fail results, and the identity of the inspector. Records are retained for 2 years minimum, in a format that can be produced on customer request.
+</p>
+
+<!-- ============================================================
+     PART 10 — PROOF TEST AND RELIABILITY
+     ============================================================ -->
+<h1>Part 10 — Proof Test and Reliability</h1>
+
+<h2>10.1 Proof Test</h2>
+
+<p>
+Every element is proof-tested before shipment. The nominal target is <strong>25 MPa peak biaxial tensile stress</strong>. For a simply supported circular plate with effective support radius a = 5.0 mm, thickness t = 2.0 mm, and Poisson's ratio ν = 0.25, a pressure differential of 3.3 MPa gives a calculated central stress of approximately 25 MPa. The effective support radius must be fixed and verified by the proof-fixture design; the phrase “O-ring at the mounting zone” alone is insufficient because the zone extends from r = 5.0 to 6.0 mm. The fixture must also account for O-ring contact width, actual part thickness, and departures from the assumed support condition before the nominal pressure is treated as a 25 MPa proof. Survivors are accepted; failed elements are scrapped.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Proof stress</td><td>25 MPa nominal peak biaxial tensile stress, subject to fixture qualification</td></tr>
+    <tr><td>Applied pressure differential</td><td>3.3 MPa nominal for the stated a = 5.0 mm, t = 2.0 mm, ν = 0.25 simply supported model; production pressure must follow the qualified fixture procedure</td></tr>
+    <tr><td>Test method</td><td>Batch pressure vessel with a fixed, non-field-adjustable O-ring fixture designed for an effective support radius of 5.0 mm (clear-aperture edge). Verify the effective support location and loading experimentally or by an appropriate validated mechanical model.</td></tr>
+    <tr><td>Failure action</td><td>Any element that fails is scrapped; the batch is flagged and the upstream process investigated</td></tr>
+    <tr><td>Service limit (post-proof)</td><td>12.5 MPa (nominal safety factor 2 from a qualified 25 MPa proof stress)</td></tr>
+    <tr><td>Calculated survival at nominal (σ<sub>0</sub> = 100 MPa, m = 8)</td><td>&gt; 0.9999 at 25 MPa under the stated Weibull model</td></tr>
+    <tr><td>Calculated survival at worst-case accepted parameters (σ<sub>0</sub> = 80 MPa, m = 6)</td><td>≈ 0.9991 at 25 MPa under the stated Weibull model</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+<strong>Fixture radius and survival figures.</strong> In the simply supported model, central stress scales with the square of the effective support radius and inversely with the square of thickness. At the same 3.3 MPa pressure and nominal 2.0 mm thickness, changing the effective radius from 5.0 to 5.5 or 6.0 mm raises the calculated stress from approximately 25 to 30 or 36 MPa. The corresponding Weibull survival estimates for σ<sub>0</sub> = 80 MPa and m = 6 are approximately 99.91%, 99.70%, and 99.15%, respectively. These are model predictions, not fixture-validation results. Do not use the 25 MPa survival estimate for a fixture whose effective support radius or contact condition has not been established.
+</div>
+
+<div class="note">
+<strong>Why target 25 MPa, not 50 MPa.</strong> Under the stated Weibull model, proof at 50 MPa would cause an unacceptable rejection rate for an accepted worst-case lot (σ<sub>0</sub> = 80 MPa, m = 6). At 25 MPa nominal proof stress, calculated survival is approximately 99.91%. The corresponding nominal service limit is 12.5 MPa, above the stated mount and thermal loads (&lt; 5 MPa in service). This comparison applies only if the proof stress is achieved in the qualified fixture.
+</div>
+
+<h2>10.2 Weibull Characterization</h2>
+
+<p>
+The Weibull parameters (σ<sub>0</sub>, m) are established by burst testing 30 samples per lot by the same pressure-differential method used in production proof. The acceptance is σ<sub>0</sub> ≥ 80 MPa and m ≥ 6. If either is below spec, the lot is quarantined and the upstream process (polish quality, edge finish, grain size) is investigated.
+</p>
+
+<h2>10.3 Environmental Reliability</h2>
+
+<table>
+  <thead>
+    <tr><th>Test</th><th>Standard / condition</th><th>Acceptance</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Humidity</td><td>85 °C / 85% RH / 1000 h</td><td>Δm &lt; 0.1%, no haze, T change &lt; 1%</td></tr>
+    <tr><td>Accelerated humidity</td><td>121 °C / 100% RH / 100 h</td><td>ΔT &lt; 1%, no haze; equivalent to ~88 years at 25 °C / 60% RH</td></tr>
+    <tr><td>Thermal cycling</td><td>−20 to +60 °C, 100 cycles, 10 °C/min</td><td>No cracks, ΔT &lt; 1%</td></tr>
+    <tr><td>Vibration</td><td>10–2000 Hz, 1 g rms, 2 h per axis</td><td>No crack or alignment drift &gt; 0.1 mrad; no movement of set-screw or retainer witness marks; safety wires intact (per-lot verification in § 9.3)</td></tr>
+    <tr><td>Mechanical shock (drop)</td><td>1.5 m, 6 faces, on mounted assembly</td><td>No crack, no shift &gt; 0.1 mrad</td></tr>
+    <tr><td>Salt fog</td><td>MIL-STD-810 method 509, 96 h</td><td>No visible degradation</td></tr>
+    <tr><td>Fungus resistance</td><td>MIL-STD-810 method 508, 28 days</td><td>No growth on any surface</td></tr>
+    <tr><td>Cleaning wear</td><td>100 IPA wipe cycles</td><td>ΔT &lt; 0.5%</td></tr>
+  </tbody>
+</table>
+
+<h2>10.4 Service-Life Estimate</h2>
+
+<p>
+Post-proof, at service stress ≤ 12.5 MPa and with the environment within the operating envelope, the expected 10-year survival probability is &gt; 99.99%. The dominant long-term risk is RTV creep in the mount; the Belleville washer maintains constant preload against it, and the mount is qualified to hold focus within 0.1 mrad over the 10-year life.
+</p>
+
+<!-- Continue with Part 11 immediately below this line. -->
+
+<!-- ============================================================
+     PART 11 — COST ANALYSIS
+     ============================================================ -->
+<h1>Part 11 — Cost Analysis</h1>
+
+<h2>11.1 Cost Structure</h2>
+
+<table>
+  <thead>
+    <tr><th>Cost element</th><th>Per element</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Precursors (4N5 Gd<sub>2</sub>O<sub>3</sub>, 4N Ba salt, NH<sub>4</sub>F)</td><td>$0.60</td><td>High-purity, small volume</td></tr>
+    <tr><td>Powder processing (co-precip, hydrothermal, calcination, mill, spray-dry)</td><td>$1.80</td><td>Includes all QC</td></tr>
+    <tr><td>CIP + sinter + HIP (capsule, liner, BN, argon)</td><td>$5.20</td><td>Capsule and liner are single-use</td></tr>
+    <tr><td>Anneal + shape + polish + HF etch + plasma clean</td><td>$3.50</td><td>Including HF waste handling</td></tr>
+    <tr><td>Coating (Al seed + ALD Al<sub>2</sub>O<sub>3</sub> + UV mirror + AR + overcoat)</td><td>$4.50</td><td>IAD and ALD are batch processes</td></tr>
+    <tr><td>Mount + assembly (PBT-GF30 barrel, SS316 ring, RTV, retainer, Belleville)</td><td>$3.20</td><td>Includes cleanroom assembly</td></tr>
+    <tr><td>QC (every-element + every-lot)</td><td>$1.80</td><td>Including proof-test</td></tr>
+    <tr><td>Packaging + shipping</td><td>$0.40</td><td>Individual tray, desiccant, N<sub>2</sub> bag</td></tr>
+    <tr><td><strong>Total per good element at 100% yield</strong></td><td><strong>$21.00</strong></td><td></td></tr>
+    <tr><td><strong>Total per good element at 77% yield</strong></td><td><strong>$27.30</strong></td><td>Realistic first-pass yield</td></tr>
+  </tbody>
+</table>
+
+<p>
+The dominant cost drivers are the HIP (single-use Ta capsule and Mo liner) and the coating stack (ALD + IAD + UV mirror). The cost can be reduced at higher volume by redesigning the capsule for reuse and by moving the AR to a higher-throughput batch coater; both are process improvements for higher tiers, not changes to this baseline product.
+</p>
+
+<h2>11.2 Comparison to Alternatives</h2>
+
+<table>
+  <thead>
+    <tr><th>Element</th><th>Approx. cost per element (supplier)</th><th>Bandwidth</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>N-BK7 glass</td><td>$10 – $30</td><td>350 nm – 2 µm</td><td>Visible-only, low dn/dT, softer than BGF-28 at the same $</td></tr>
+    <tr><td>N-SK16 glass</td><td>$15 – $50</td><td>350 nm – 2 µm</td><td>Lighter than BGF-28 per unit optical power (1.85×); visible-only</td></tr>
+    <tr><td>Fused silica</td><td>$20 – $60</td><td>200 nm – 2.5 µm</td><td>UV-friendly, but no MWIR</td></tr>
+    <tr><td>CaF<sub>2</sub> single crystal</td><td>$40 – $100</td><td>130 nm – 10 µm</td><td>Wideband, but cleaves, anisotropic, higher cost</td></tr>
+    <tr><td>BaF<sub>2</sub> single crystal</td><td>$50 – $120</td><td>135 nm – 11 µm</td><td>Widest band, but expensive and fragile</td></tr>
+    <tr><td>Sapphire</td><td>$30 – $80</td><td>190 nm – 5.5 µm</td><td>Harder; higher index (1.77); birefringent (uniaxial)</td></tr>
+    <tr><td><strong>BGF-28</strong></td><td><strong>$25 – $35</strong></td><td><strong>Specified transmission through 5 µm; approximate extent to 8 µm unqualified</strong></td><td>Isotropic, low dn/dT, no cleavage, glass-class cost</td></tr>
+  </tbody>
+</table>
+
+<h2>11.3 Total Cost of Ownership</h2>
+
+<p>
+Over the life of the instrument, BGF-28 is expected to cost less than CaF<sub>2</sub> not only in purchase price but also in service life: the ceramic is not cleavable, does not require crystal-axis alignment, and does not suffer from stress birefringence. The 10-year service-life probability (&gt; 99.99%) and the ready availability of replacement elements reduce the instrument's long-term maintenance cost.
+</p>
+
+<!-- ============================================================
+     PART 12 — HEALTH AND SAFETY
+     ============================================================ -->
+<h1>Part 12 — Health and Safety</h1>
+
+<h2>12.1 Production-Phase Hazards</h2>
+
+<p>
+The finished element presents no unusual hazards. The production line, however, uses hazardous materials at several stages. The hazards below are not common knowledge and must be controlled.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Hazard</th><th>Stage</th><th>Effect</th><th>Control</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BaF<sub>2</sub> dust</td>
+      <td>Powder handling, mill, spray-dry</td>
+      <td>Barium is toxic if ingested (Ba²⁺ blocks potassium channels); respiratory irritant</td>
+      <td>Glovebox (&lt; 1% RH), N95 or better, dust monitoring, no eating/drinking in area</td>
+    </tr>
+    <tr>
+      <td>GdF<sub>3</sub> dust</td>
+      <td>Powder handling, mill, spray-dry</td>
+      <td>Respiratory irritant; no chronic toxicity known at these levels</td>
+      <td>Same glovebox and respirator controls as BaF<sub>2</sub></td>
+    </tr>
+    <tr>
+      <td>NH<sub>4</sub>F</td>
+      <td>Co-precipitation</td>
+      <td>Corrosive; releases HF on contact with acid</td>
+      <td>Acid-resistant gloves, face shield, fume hood</td>
+    </tr>
+    <tr>
+      <td>HF (liquid)</td>
+      <td>HF etch (Step 19)</td>
+      <td>Penetrates skin, attacks bone, can cause systemic toxicity and cardiac arrest from small skin exposures</td>
+      <td>Dedicated HF bench; calcium gluconate gel immediately available; face shield; HF-rated gloves; apron; buddy system; HF first-aid trained</td>
+    </tr>
+    <tr>
+      <td>F<sub>2</sub>, HF vapor</td>
+      <td>Sinter furnace exhaust</td>
+      <td>Corrosive and toxic</td>
+      <td>Ca(OH)<sub>2</sub> scrubber on exhaust; F monitor in work area</td>
+    </tr>
+    <tr>
+      <td>HF in N<sub>2</sub> (5% calcination atmosphere)</td>
+      <td>Calcination (Step 6)</td>
+      <td>Corrosive and toxic; HF vapor at exhaust</td>
+      <td>Ca(OH)<sub>2</sub> + acid scrubber on exhaust; F monitor in calcination area; face shield and HF-rated gloves for boat handling</td>
+    </tr>
+    <tr>
+      <td>TMA (trimethylaluminum)</td>
+      <td>ALD Al<sub>2</sub>O<sub>3</sub> (§ 6.2)</td>
+      <td>Pyrophoric — ignites spontaneously in air; violently water-reactive; corrosive vapor; releases methane on reaction with moisture</td>
+      <td>ALD tool with inert-gas purge; dry, oxygen-free precursor handling; no water lines in the precursor cabinet; Class D fire suppression immediately available; TMA-specific training; never vent TMA to atmosphere; exhaust scrubbed</td>
+    </tr>
+    <tr>
+      <td>Ta / Mo dust</td>
+      <td>Capsule and liner handling</td>
+      <td>Respiratory irritant</td>
+      <td>Local exhaust ventilation; N95</td>
+    </tr>
+    <tr>
+      <td>Fluoride waste (liquid and solid)</td>
+      <td>All stages</td>
+      <td>Environmental hazard (F⁻ in water)</td>
+      <td>Neutralize with Ca(OH)<sub>2</sub> before disposal; no direct sewer discharge</td>
+    </tr>
+    <tr>
+      <td>Organic solvents (EtOH, IPA, acetone)</td>
+      <td>Milling, cleaning, coating</td>
+      <td>Flammable; inhalation hazard</td>
+      <td>Fume hood, fire-safe storage, bonding and grounding</td>
+    </tr>
+    <tr>
+      <td>O<sub>2</sub>-rich atmosphere</td>
+      <td>Al seed oxidation</td>
+      <td>Fire hazard</td>
+      <td>O<sub>2</sub> system designed for oxygen service; no grease or organic material in the O<sub>2</sub> plumbing</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>12.2 Waste Disposal</h2>
+
+<table>
+  <thead>
+    <tr><th>Waste stream</th><th>Disposal</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Fluoride-containing liquid</td><td>Neutralize with Ca(OH)<sub>2</sub> to pH 7–9; test F⁻ &lt; 10 ppm; discharge to industrial sewer with permit</td></tr>
+    <tr><td>Fluoride-containing solid (failed parts, polish swarf)</td><td>Bag and label as fluoride solid waste; dispose via licensed fluoride-waste handler</td></tr>
+    <tr><td>Ta / Mo metal scrap</td><td>Segregate and sell as high-value scrap</td></tr>
+    <tr><td>Gd-containing scrap</td><td>Segregate for potential recovery; store in labeled containers</td></tr>
+    <tr><td>Solvent waste</td><td>Halogen-free solvent waste stream; licensed handler</td></tr>
+  </tbody>
+</table>
+
+<!-- ============================================================
+     PART 13 — ADVANCED OPTIMIZATION
+     ============================================================ -->
+<h1>Part 13 — Advanced Optimization</h1>
+
+<p>
+Higher-performance variants of the BGF-28 element are available on request. These variants extend the baseline in one or more of the following directions: extended spectral coverage beyond the baseline transmission window, higher optical power per element for system compaction, integration of multiple optical functions into a single element, or operation under optical loads above the baseline in-service limit.
+</p>
+
+<p>
+The specific performance values of these variants, the process changes required to produce them, and the corresponding operating instructions are not part of this Tier 1 public document. They are provided under separate cover to qualified parties on request, in the same engineering-only format as this document: full production and operation information, without design derivation. Tier 1 is complete in itself and is not a prerequisite for any higher-tier product.
+</p>
+
+<p>
+The baseline Tier 1 product described in Parts 1 through 12 is fully specified and can be produced, mounted, and operated as described without reference to any higher-tier offering.
+</p>
+
+<!-- ============================================================
+     LICENSE AND PATENT STATEMENT
+     ============================================================ -->
+<h1>License and Patent Statement</h1>
+
+<h2>License</h2>
+
+<p>
+This document, and the engineering information it contains, is released under the <strong>Creative Commons Attribution 4.0 International License (CC BY 4.0)</strong>. You are free to share and adapt the material for any purpose, including commercial use, provided you give appropriate credit to the original author, provide a link to the license, and indicate if changes were made.
+</p>
+
+<p>
+Full license text: <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a>
+</p>
+
+<h2>Technology Patent Status</h2>
+
+<p>
+The technology described in this document is released <strong>patent-free</strong>. No patents have been sought on the element, the production process, the coating stack, or the mount. No patent royalties are owed by any user of this document. Anyone may produce, sell, or use the BGF-28 element without a license from the author.
+</p>
+
+<p>
+The release is under CC BY 4.0 with attribution required. The correct attribution is: <em>"BGF-28 Transparent Ceramic Optical Element — Tier 1 Baseline Product, Martin Hristov, 2026, CC BY 4.0."</em>
+</p>
+
+<h2>Document Status</h2>
+
+<p>
+This is the public engineering specification for the BGF-28 Tier 1 baseline product. It is the complete engineering description of the element and is intended to allow any qualified engineering team to produce, mount, and operate the element without further information.
+</p>
+
+<hr style="margin: 3em 0; border: none; border-top: 1px solid #aaa;">
+
+<div class="warn" style="text-align: center; font-style: italic;">
+<strong>Note from the author.</strong> All military and destructive applications of the author's technologies go against the author's will. This element, its production process, and the information in this document are released for peaceful scientific, industrial, and medical instrumentation only.
+</div>
+
+<hr style="margin: 3em 0; border: none; border-top: 1px solid #aaa;">
+
+<p style="text-align: center; font-style: italic; color: #555;">
+End of document.
+</p>
+
+</body>
+</html>
